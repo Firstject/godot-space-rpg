@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/GalaxHero_SFX_UI_Button1.wav-8aa95f0d996496f473a7c05317777722.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sfx/UI/GalaxHero_SFX_UI_Button1.wav"
+dest_files=[ "res://.import/GalaxHero_SFX_UI_Button1.wav-8aa95f0d996496f473a7c05317777722.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

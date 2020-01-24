@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shield_block.wav-0b0cf9c585069f21196bbb88a96dc848.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sfx/Combat/shield_block.wav"
+dest_files=[ "res://.import/shield_block.wav-0b0cf9c585069f21196bbb88a96dc848.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

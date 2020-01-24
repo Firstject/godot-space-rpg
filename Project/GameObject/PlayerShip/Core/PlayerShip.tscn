@@ -1,0 +1,114 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://GameObject/Entity/Entity.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GameObject/PlayerShip/Core/PlayerShip.gd" type="Script" id=2]
+[ext_resource path="res://Lib/Instanceable/BulletBehavior/BulletBehavior.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Lib/Instanceable/8DirectionBehavior/8DirectionBehavior.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GameObject/PlayerShip/Core/PlayerShipTouchController.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GameObject/DamagePopupTurret/DamagePopupTurret.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GameObject/InvincibleState/InvincibleState.tscn" type="PackedScene" id=7]
+[ext_resource path="res://GameObject/ExperienceSystem/ExperienceSystem.tscn" type="PackedScene" id=8]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 6.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "DamageFinish"
+length = 0.12
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "DamageLoop"
+length = 0.06
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="PlayerShip" groups=[
+"PlayerShip",
+] instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="PoseBltBhv" parent="." index="0" instance=ExtResource( 3 )]
+active = false
+speed = 240.0
+acceleration = -180.0
+angle_in_degrees = -90.0
+
+[node name="Controls" type="Node" parent="." index="1"]
+
+[node name="EightDirectionBehavior" parent="Controls" index="0" instance=ExtResource( 4 )]
+root_node = NodePath("../..")
+active = false
+ignore_inputs = false
+
+[node name="PlayerShipTouchController" parent="Controls" index="1" instance=ExtResource( 5 )]
+target_node2d = NodePath("../..")
+active = false
+
+[node name="Sprite" type="Sprite" parent="." index="2"]
+
+[node name="ExperienceSystem" parent="." index="3" instance=ExtResource( 8 )]
+
+[node name="ShipComponents" type="Node2D" parent="." index="4"]
+
+[node name="Weapon" type="Node2D" parent="ShipComponents" index="0"]
+position = Vector2( 0, -8 )
+
+[node name="Shield" type="Node2D" parent="ShipComponents" index="1"]
+
+[node name="Satellites" type="Node2D" parent="ShipComponents" index="2"]
+
+[node name="Superpower" type="Node2D" parent="ShipComponents" index="3"]
+
+[node name="Modules" type="Node2D" parent="ShipComponents" index="4"]
+
+[node name="Hitbox" type="Node2D" parent="." index="5"]
+
+[node name="DamageArea2D" type="Area2D" parent="Hitbox" index="0"]
+visible = false
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox/DamageArea2D" index="0"]
+shape = SubResource( 1 )
+
+[node name="DamagePopupTurret" parent="." index="6" instance=ExtResource( 6 )]
+visible = false
+
+[node name="ShieldDamagePopupTurret" parent="." index="7" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 0, 8 )
+
+[node name="DamageAnim" type="AnimationPlayer" parent="." index="8"]
+anims/DamageFinish = SubResource( 2 )
+anims/DamageLoop = SubResource( 3 )
+
+[node name="InvincibleState" parent="." index="9" instance=ExtResource( 7 )]
+invinc_time = 0.8
+[connection signal="took_damage" from="." to="." method="_on_PlayerShip_took_damage"]
+[connection signal="stopped_moving" from="PoseBltBhv" to="." method="_on_PoseBltBhv_stopped_moving"]
+[connection signal="level_up" from="ExperienceSystem" to="." method="_on_ExperienceSystem_level_up"]
+[connection signal="stopped" from="InvincibleState" to="." method="_on_InvincibleState_stopped"]

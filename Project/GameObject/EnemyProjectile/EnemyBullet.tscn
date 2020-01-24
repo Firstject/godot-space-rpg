@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GameObject/EnemyProjectile/Core/EnemyProjectileCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Image/Enemy/EnemyBullet.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 4 )
+
+[node name="EnemyBullet" instance=ExtResource( 1 )]
+base_atk = 10.0
+
+[node name="BulletBehavior" parent="." index="0"]
+speed = 90.0
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="Hitbox/Area2D" index="0"]
+shape = SubResource( 1 )

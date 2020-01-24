@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://GameDatabase/Item/Equipment/Modules/Module.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+item_name = "Nanofiber Structures"
+desc = "Gives a small amount of Hitpoints. Despite its name, it does not reduce the weight of your ship."
+price = 0
+can_be_sold = true
+equip_type = 0
+rare_price = 0
+atk_bonus = 0.0
+def_bonus = 0.0
+hp_bonus = 5
+crit_bonus = 0.0
+rage_bonus = 0.0
+invis_length_bonus = 0.0
+upgrade_change_equips = [  ]

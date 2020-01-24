@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://GameObject/Entity/Entity.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GameObject/EnemyCore/Core/EnemyCore.gd" type="Script" id=2]
+[ext_resource path="res://Lib/Instanceable/BulletBehavior/BulletBehavior.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Lib/Instanceable/BrightnessShader/BrightnessShader.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GameObject/DamagePopupTurret/DamagePopupTurret.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GameObject/LevelBulletBhv/LevelBulletBhv.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GameObject/ExperienceSystem/ExperienceSystem.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Damage"
+length = 0.08
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/BrightnessShader:brightness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 0.0 ]
+}
+
+[node name="EnemyCore" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+debris_count = 12
+
+[node name="BulletBehavior" parent="." index="0" instance=ExtResource( 3 )]
+active = false
+angle_in_degrees = 90.0
+
+[node name="LevelBulletBhv" parent="." index="1" instance=ExtResource( 6 )]
+
+[node name="Sprite" type="Sprite" parent="." index="2"]
+
+[node name="BrightnessShader" parent="Sprite" index="0" instance=ExtResource( 4 )]
+
+[node name="ExperienceSystem" parent="." index="3" instance=ExtResource( 7 )]
+
+[node name="Hitbox" type="Node2D" parent="." index="4"]
+
+[node name="Area2D" type="Area2D" parent="Hitbox" index="0"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox/Area2D" index="0"]
+
+[node name="DamagePopupTurret" parent="." index="5" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 0, -8 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="6"]
+visible = false
+
+[node name="DamageAnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+anims/Damage = SubResource( 1 )
+[connection signal="area_entered" from="Hitbox/Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

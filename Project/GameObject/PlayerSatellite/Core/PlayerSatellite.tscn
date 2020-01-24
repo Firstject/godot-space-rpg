@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GameObject/PlayerEquipmentCore/PlayerEquipmentCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GameObject/PlayerSatellite/Core/PlayerSatellite.gd" type="Script" id=2]
+
+[node name="PlayerSatellite" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+base_atk = 0.0
+
+[node name="ShootTimer" type="Timer" parent="." index="0"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

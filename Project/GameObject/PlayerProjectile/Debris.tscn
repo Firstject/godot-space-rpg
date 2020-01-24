@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://GameObject/PlayerProjectile/Core/PlayerProjectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Image/PlayerProjectile/Debris.png" type="Texture" id=2]
+[ext_resource path="res://GameObject/PlayerProjectile/Debris.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 4 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.992045 ), 0.0, -2.75284, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=3]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="Debris" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="BulletBehavior" parent="." index="1"]
+speed = 60.0
+acceleration = -60.0
+
+[node name="Sprite" parent="." index="2"]
+position = Vector2( 0.0944672, 0 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="Hitbox/Area2D" index="0"]
+shape = SubResource( 1 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="4"]
+amount = 20
+lifetime = 0.6
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector2( 0, 0 )
+angular_velocity = 232.81
+angular_velocity_random = 1.0
+scale_amount = 6.0
+scale_amount_random = 0.4
+scale_amount_curve = SubResource( 2 )
+color = Color( 1, 0.513726, 0, 1 )
+hue_variation = 0.08
+hue_variation_random = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+anims/Deleting = SubResource( 3 )
+[connection signal="stopped_moving" from="BulletBehavior" to="." method="_on_BulletBehavior_stopped_moving"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Levels/Core/Level.gd" type="Script" id=1]
+[ext_resource path="res://GameObject/LevelBulletBhv/LevelBulletBhv.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Lib/Instanceable/SpriteCycling/SpriteCycling.tscn" type="PackedScene" id=3]
+
+[node name="LevelCore" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="EnemyTray" type="Node2D" parent="."]
+
+[node name="LevelBulletBhv" parent="EnemyTray" instance=ExtResource( 2 )]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="LevelBulletBhv" parent="Background" instance=ExtResource( 2 )]
+speed_setting = 1
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="SpriteCycling" parent="Objects" instance=ExtResource( 3 )]

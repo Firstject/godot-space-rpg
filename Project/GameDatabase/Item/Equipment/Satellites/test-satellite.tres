@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://GameDatabase/Item/Equipment/Satellites/Satellite.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+item_name = "Cross Dev"
+desc = ""
+price = 0
+can_be_sold = true
+equip_type = 0
+rare_price = 0
+atk_bonus = 0.0
+def_bonus = 0.0
+hp_bonus = 0
+crit_bonus = 0.0
+rage_bonus = 0.0
+invis_length_bonus = 0.0
+atk_strength = 0.8
+max_atk_strength = 0.65
+fire_rate = 0.7
+max_fire_rate = 0.2
+total_exp = 3200

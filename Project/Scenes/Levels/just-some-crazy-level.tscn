@@ -1,0 +1,1656 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Levels/Core/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Lib/Instanceable/BgColorSetter/BgColorSetter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GameObject/EnemySpawner/EnemySpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameObject/EnemyCore/test-moving-enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GameObject/EnemyCore/test-enemy-static.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Audio/Bgm/Galaxy Hero - Stage 5 [VRC6].ogg" type="AudioStream" id=6]
+
+[node name="just-some-crazy-level" instance=ExtResource( 1 )]
+level_name = "Nebula Star IV"
+level_music = ExtResource( 6 )
+lv_scroll_speed = 30.0
+
+[node name="BgColorSetter" parent="." index="0" instance=ExtResource( 2 )]
+bg_color = Color( 0.12549, 0, 0.266667, 1 )
+
+[node name="Wave0" type="Node2D" parent="EnemyTray" index="1"]
+
+[node name="fire" parent="EnemyTray/Wave0" index="0" instance=ExtResource( 3 )]
+position = Vector2( 64, -64 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire2" parent="EnemyTray/Wave0" index="1" instance=ExtResource( 3 )]
+position = Vector2( 128, -64 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire3" parent="EnemyTray/Wave0" index="2" instance=ExtResource( 3 )]
+position = Vector2( 160, -128 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire4" parent="EnemyTray/Wave0" index="3" instance=ExtResource( 3 )]
+position = Vector2( 96, -128 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire5" parent="EnemyTray/Wave0" index="4" instance=ExtResource( 3 )]
+position = Vector2( 112, -352 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire6" parent="EnemyTray/Wave0" index="5" instance=ExtResource( 3 )]
+position = Vector2( 120, -520 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire7" parent="EnemyTray/Wave0" index="6" instance=ExtResource( 3 )]
+position = Vector2( 176, -760 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire8" parent="EnemyTray/Wave0" index="7" instance=ExtResource( 3 )]
+position = Vector2( 128, -920 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire9" parent="EnemyTray/Wave0" index="8" instance=ExtResource( 3 )]
+position = Vector2( 120, -1072 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire10" parent="EnemyTray/Wave0" index="9" instance=ExtResource( 3 )]
+position = Vector2( 88, -1200 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire11" parent="EnemyTray/Wave0" index="10" instance=ExtResource( 3 )]
+position = Vector2( 64, -1336 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire12" parent="EnemyTray/Wave0" index="11" instance=ExtResource( 3 )]
+position = Vector2( 32, -1480 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire13" parent="EnemyTray/Wave0" index="12" instance=ExtResource( 3 )]
+position = Vector2( 96, -1480 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire14" parent="EnemyTray/Wave0" index="13" instance=ExtResource( 3 )]
+position = Vector2( 176, -1592 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire15" parent="EnemyTray/Wave0" index="14" instance=ExtResource( 3 )]
+position = Vector2( 144, -1672 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire16" parent="EnemyTray/Wave0" index="15" instance=ExtResource( 3 )]
+position = Vector2( 200, -1672 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire17" parent="EnemyTray/Wave0" index="16" instance=ExtResource( 3 )]
+position = Vector2( 24, -1816 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire18" parent="EnemyTray/Wave0" index="17" instance=ExtResource( 3 )]
+position = Vector2( 72, -1816 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire19" parent="EnemyTray/Wave0" index="18" instance=ExtResource( 3 )]
+position = Vector2( 48, -1840 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="Wave1" type="Node2D" parent="EnemyTray" index="2"]
+
+[node name="testenemy" parent="EnemyTray/Wave1" index="0" instance=ExtResource( 3 )]
+position = Vector2( 8, -192 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy2" parent="EnemyTray/Wave1" index="1" instance=ExtResource( 3 )]
+position = Vector2( 8, -224 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy3" parent="EnemyTray/Wave1" index="2" instance=ExtResource( 3 )]
+position = Vector2( 24, -256 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy4" parent="EnemyTray/Wave1" index="3" instance=ExtResource( 3 )]
+position = Vector2( 24, -288 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy5" parent="EnemyTray/Wave1" index="4" instance=ExtResource( 3 )]
+position = Vector2( 216, -192 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy6" parent="EnemyTray/Wave1" index="5" instance=ExtResource( 3 )]
+position = Vector2( 216, -224 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy7" parent="EnemyTray/Wave1" index="6" instance=ExtResource( 3 )]
+position = Vector2( 200, -256 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy8" parent="EnemyTray/Wave1" index="7" instance=ExtResource( 3 )]
+position = Vector2( 200, -288 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy9" parent="EnemyTray/Wave1" index="8" instance=ExtResource( 3 )]
+position = Vector2( 184, -320 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy10" parent="EnemyTray/Wave1" index="9" instance=ExtResource( 3 )]
+position = Vector2( 40, -320 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy11" parent="EnemyTray/Wave1" index="10" instance=ExtResource( 3 )]
+position = Vector2( 56, -352 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy12" parent="EnemyTray/Wave1" index="11" instance=ExtResource( 3 )]
+position = Vector2( 168, -352 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy13" parent="EnemyTray/Wave1" index="12" instance=ExtResource( 3 )]
+position = Vector2( 56, -384 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy14" parent="EnemyTray/Wave1" index="13" instance=ExtResource( 3 )]
+position = Vector2( 168, -384 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy15" parent="EnemyTray/Wave1" index="14" instance=ExtResource( 3 )]
+position = Vector2( 56, -416 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy16" parent="EnemyTray/Wave1" index="15" instance=ExtResource( 3 )]
+position = Vector2( 168, -416 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy17" parent="EnemyTray/Wave1" index="16" instance=ExtResource( 3 )]
+position = Vector2( 56, -448 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy18" parent="EnemyTray/Wave1" index="17" instance=ExtResource( 3 )]
+position = Vector2( 168, -448 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy19" parent="EnemyTray/Wave1" index="18" instance=ExtResource( 3 )]
+position = Vector2( 56, -480 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy20" parent="EnemyTray/Wave1" index="19" instance=ExtResource( 3 )]
+position = Vector2( 168, -480 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy21" parent="EnemyTray/Wave1" index="20" instance=ExtResource( 3 )]
+position = Vector2( 56, -512 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy22" parent="EnemyTray/Wave1" index="21" instance=ExtResource( 3 )]
+position = Vector2( 168, -512 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy23" parent="EnemyTray/Wave1" index="22" instance=ExtResource( 3 )]
+position = Vector2( 72, -544 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy24" parent="EnemyTray/Wave1" index="23" instance=ExtResource( 3 )]
+position = Vector2( 184, -544 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy25" parent="EnemyTray/Wave1" index="24" instance=ExtResource( 3 )]
+position = Vector2( 88, -576 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy26" parent="EnemyTray/Wave1" index="25" instance=ExtResource( 3 )]
+position = Vector2( 200, -576 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy27" parent="EnemyTray/Wave1" index="26" instance=ExtResource( 3 )]
+position = Vector2( 104, -608 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy28" parent="EnemyTray/Wave1" index="27" instance=ExtResource( 3 )]
+position = Vector2( 216, -608 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy29" parent="EnemyTray/Wave1" index="28" instance=ExtResource( 3 )]
+position = Vector2( 120, -640 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy30" parent="EnemyTray/Wave1" index="29" instance=ExtResource( 3 )]
+position = Vector2( 216, -640 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy31" parent="EnemyTray/Wave1" index="30" instance=ExtResource( 3 )]
+position = Vector2( 120, -672 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy32" parent="EnemyTray/Wave1" index="31" instance=ExtResource( 3 )]
+position = Vector2( 216, -672 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy33" parent="EnemyTray/Wave1" index="32" instance=ExtResource( 3 )]
+position = Vector2( 120, -704 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy34" parent="EnemyTray/Wave1" index="33" instance=ExtResource( 3 )]
+position = Vector2( 216, -704 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy35" parent="EnemyTray/Wave1" index="34" instance=ExtResource( 3 )]
+position = Vector2( 104, -736 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy36" parent="EnemyTray/Wave1" index="35" instance=ExtResource( 3 )]
+position = Vector2( 216, -736 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy37" parent="EnemyTray/Wave1" index="36" instance=ExtResource( 3 )]
+position = Vector2( 88, -768 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy38" parent="EnemyTray/Wave1" index="37" instance=ExtResource( 3 )]
+position = Vector2( 216, -768 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy39" parent="EnemyTray/Wave1" index="38" instance=ExtResource( 3 )]
+position = Vector2( 72, -800 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy40" parent="EnemyTray/Wave1" index="39" instance=ExtResource( 3 )]
+position = Vector2( 216, -800 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy41" parent="EnemyTray/Wave1" index="40" instance=ExtResource( 3 )]
+position = Vector2( 56, -832 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy42" parent="EnemyTray/Wave1" index="41" instance=ExtResource( 3 )]
+position = Vector2( 216, -832 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy43" parent="EnemyTray/Wave1" index="42" instance=ExtResource( 3 )]
+position = Vector2( 40, -864 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy44" parent="EnemyTray/Wave1" index="43" instance=ExtResource( 3 )]
+position = Vector2( 216, -864 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy45" parent="EnemyTray/Wave1" index="44" instance=ExtResource( 3 )]
+position = Vector2( 24, -896 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy46" parent="EnemyTray/Wave1" index="45" instance=ExtResource( 3 )]
+position = Vector2( 216, -896 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy47" parent="EnemyTray/Wave1" index="46" instance=ExtResource( 3 )]
+position = Vector2( 8, -928 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy48" parent="EnemyTray/Wave1" index="47" instance=ExtResource( 3 )]
+position = Vector2( 216, -928 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="Wave2" type="Node2D" parent="EnemyTray" index="3"]
+
+[node name="testenemy49" parent="EnemyTray/Wave2" index="0" instance=ExtResource( 3 )]
+position = Vector2( 8, -960 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy50" parent="EnemyTray/Wave2" index="1" instance=ExtResource( 3 )]
+position = Vector2( 216, -960 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy51" parent="EnemyTray/Wave2" index="2" instance=ExtResource( 3 )]
+position = Vector2( 8, -992 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy52" parent="EnemyTray/Wave2" index="3" instance=ExtResource( 3 )]
+position = Vector2( 216, -992 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy53" parent="EnemyTray/Wave2" index="4" instance=ExtResource( 3 )]
+position = Vector2( 8, -1024 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy54" parent="EnemyTray/Wave2" index="5" instance=ExtResource( 3 )]
+position = Vector2( 216, -1024 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy55" parent="EnemyTray/Wave2" index="6" instance=ExtResource( 3 )]
+position = Vector2( 8, -1056 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy56" parent="EnemyTray/Wave2" index="7" instance=ExtResource( 3 )]
+position = Vector2( 32, -1056 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy57" parent="EnemyTray/Wave2" index="8" instance=ExtResource( 3 )]
+position = Vector2( 56, -1056 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy58" parent="EnemyTray/Wave2" index="9" instance=ExtResource( 3 )]
+position = Vector2( 216, -1056 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy59" parent="EnemyTray/Wave2" index="10" instance=ExtResource( 3 )]
+position = Vector2( 192, -1056 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy60" parent="EnemyTray/Wave2" index="11" instance=ExtResource( 3 )]
+position = Vector2( 168, -1056 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy61" parent="EnemyTray/Wave2" index="12" instance=ExtResource( 3 )]
+position = Vector2( 56, -1088 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy62" parent="EnemyTray/Wave2" index="13" instance=ExtResource( 3 )]
+position = Vector2( 168, -1088 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy63" parent="EnemyTray/Wave2" index="14" instance=ExtResource( 3 )]
+position = Vector2( 56, -1120 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy64" parent="EnemyTray/Wave2" index="15" instance=ExtResource( 3 )]
+position = Vector2( 168, -1120 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy65" parent="EnemyTray/Wave2" index="16" instance=ExtResource( 3 )]
+position = Vector2( 32, -1152 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy66" parent="EnemyTray/Wave2" index="17" instance=ExtResource( 3 )]
+position = Vector2( 144, -1152 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy67" parent="EnemyTray/Wave2" index="18" instance=ExtResource( 3 )]
+position = Vector2( 8, -1184 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy68" parent="EnemyTray/Wave2" index="19" instance=ExtResource( 3 )]
+position = Vector2( 128, -1184 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy69" parent="EnemyTray/Wave2" index="20" instance=ExtResource( 3 )]
+position = Vector2( 128, -1216 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy70" parent="EnemyTray/Wave2" index="21" instance=ExtResource( 3 )]
+position = Vector2( 8, -1216 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy71" parent="EnemyTray/Wave2" index="22" instance=ExtResource( 3 )]
+position = Vector2( 8, -1248 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy72" parent="EnemyTray/Wave2" index="23" instance=ExtResource( 3 )]
+position = Vector2( 128, -1248 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy73" parent="EnemyTray/Wave2" index="24" instance=ExtResource( 3 )]
+position = Vector2( 128, -1280 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy74" parent="EnemyTray/Wave2" index="25" instance=ExtResource( 3 )]
+position = Vector2( 8, -1280 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy75" parent="EnemyTray/Wave2" index="26" instance=ExtResource( 3 )]
+position = Vector2( 8, -1312 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy76" parent="EnemyTray/Wave2" index="27" instance=ExtResource( 3 )]
+position = Vector2( 128, -1312 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy77" parent="EnemyTray/Wave2" index="28" instance=ExtResource( 3 )]
+position = Vector2( 8, -1344 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy78" parent="EnemyTray/Wave2" index="29" instance=ExtResource( 3 )]
+position = Vector2( 128, -1344 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy79" parent="EnemyTray/Wave2" index="30" instance=ExtResource( 3 )]
+position = Vector2( 152, -1344 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy80" parent="EnemyTray/Wave2" index="31" instance=ExtResource( 3 )]
+position = Vector2( 176, -1344 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy81" parent="EnemyTray/Wave2" index="32" instance=ExtResource( 3 )]
+position = Vector2( 200, -1344 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy82" parent="EnemyTray/Wave2" index="33" instance=ExtResource( 3 )]
+position = Vector2( 216, -1376 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy83" parent="EnemyTray/Wave2" index="34" instance=ExtResource( 3 )]
+position = Vector2( 8, -1376 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy84" parent="EnemyTray/Wave2" index="35" instance=ExtResource( 3 )]
+position = Vector2( 8, -1408 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy85" parent="EnemyTray/Wave2" index="36" instance=ExtResource( 3 )]
+position = Vector2( 8, -1440 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy86" parent="EnemyTray/Wave2" index="37" instance=ExtResource( 3 )]
+position = Vector2( 32, -1440 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy87" parent="EnemyTray/Wave2" index="38" instance=ExtResource( 3 )]
+position = Vector2( 56, -1440 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy88" parent="EnemyTray/Wave2" index="39" instance=ExtResource( 3 )]
+position = Vector2( 80, -1440 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy89" parent="EnemyTray/Wave2" index="40" instance=ExtResource( 3 )]
+position = Vector2( 104, -1440 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy90" parent="EnemyTray/Wave2" index="41" instance=ExtResource( 3 )]
+position = Vector2( 128, -1440 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy91" parent="EnemyTray/Wave2" index="42" instance=ExtResource( 3 )]
+position = Vector2( 152, -1440 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy92" parent="EnemyTray/Wave2" index="43" instance=ExtResource( 3 )]
+position = Vector2( 152, -1472 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy93" parent="EnemyTray/Wave2" index="44" instance=ExtResource( 3 )]
+position = Vector2( 152, -1504 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy94" parent="EnemyTray/Wave2" index="45" instance=ExtResource( 3 )]
+position = Vector2( 152, -1536 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy95" parent="EnemyTray/Wave2" index="46" instance=ExtResource( 3 )]
+position = Vector2( 128, -1536 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy96" parent="EnemyTray/Wave2" index="47" instance=ExtResource( 3 )]
+position = Vector2( 104, -1536 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy97" parent="EnemyTray/Wave2" index="48" instance=ExtResource( 3 )]
+position = Vector2( 80, -1536 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy98" parent="EnemyTray/Wave2" index="49" instance=ExtResource( 3 )]
+position = Vector2( 56, -1536 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy99" parent="EnemyTray/Wave2" index="50" instance=ExtResource( 3 )]
+position = Vector2( 32, -1536 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy100" parent="EnemyTray/Wave2" index="51" instance=ExtResource( 3 )]
+position = Vector2( 8, -1536 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy101" parent="EnemyTray/Wave2" index="52" instance=ExtResource( 3 )]
+position = Vector2( 216, -1408 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy102" parent="EnemyTray/Wave2" index="53" instance=ExtResource( 3 )]
+position = Vector2( 216, -1440 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy103" parent="EnemyTray/Wave2" index="54" instance=ExtResource( 3 )]
+position = Vector2( 216, -1472 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy104" parent="EnemyTray/Wave2" index="55" instance=ExtResource( 3 )]
+position = Vector2( 216, -1504 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy105" parent="EnemyTray/Wave2" index="56" instance=ExtResource( 3 )]
+position = Vector2( 216, -1536 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="Wave3" type="Node2D" parent="EnemyTray" index="4"]
+
+[node name="testenemy106" parent="EnemyTray/Wave3" index="0" instance=ExtResource( 3 )]
+position = Vector2( 8, -1568 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy107" parent="EnemyTray/Wave3" index="1" instance=ExtResource( 3 )]
+position = Vector2( 216, -1568 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy108" parent="EnemyTray/Wave3" index="2" instance=ExtResource( 3 )]
+position = Vector2( 216, -1600 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy109" parent="EnemyTray/Wave3" index="3" instance=ExtResource( 3 )]
+position = Vector2( 8, -1600 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy110" parent="EnemyTray/Wave3" index="4" instance=ExtResource( 3 )]
+position = Vector2( 8, -1632 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy111" parent="EnemyTray/Wave3" index="5" instance=ExtResource( 3 )]
+position = Vector2( 96, -1632 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy112" parent="EnemyTray/Wave3" index="6" instance=ExtResource( 3 )]
+position = Vector2( 120, -1632 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy113" parent="EnemyTray/Wave3" index="7" instance=ExtResource( 3 )]
+position = Vector2( 144, -1632 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy114" parent="EnemyTray/Wave3" index="8" instance=ExtResource( 3 )]
+position = Vector2( 168, -1632 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy115" parent="EnemyTray/Wave3" index="9" instance=ExtResource( 3 )]
+position = Vector2( 192, -1632 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy116" parent="EnemyTray/Wave3" index="10" instance=ExtResource( 3 )]
+position = Vector2( 216, -1632 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy117" parent="EnemyTray/Wave3" index="11" instance=ExtResource( 3 )]
+position = Vector2( 8, -1664 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy118" parent="EnemyTray/Wave3" index="12" instance=ExtResource( 3 )]
+position = Vector2( 96, -1664 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy119" parent="EnemyTray/Wave3" index="13" instance=ExtResource( 3 )]
+position = Vector2( 96, -1696 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy120" parent="EnemyTray/Wave3" index="14" instance=ExtResource( 3 )]
+position = Vector2( 8, -1696 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy121" parent="EnemyTray/Wave3" index="15" instance=ExtResource( 3 )]
+position = Vector2( 8, -1728 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy122" parent="EnemyTray/Wave3" index="16" instance=ExtResource( 3 )]
+position = Vector2( 96, -1728 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy123" parent="EnemyTray/Wave3" index="17" instance=ExtResource( 3 )]
+position = Vector2( 8, -1760 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy124" parent="EnemyTray/Wave3" index="18" instance=ExtResource( 3 )]
+position = Vector2( 8, -1792 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy125" parent="EnemyTray/Wave3" index="19" instance=ExtResource( 3 )]
+position = Vector2( 96, -1760 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy126" parent="EnemyTray/Wave3" index="20" instance=ExtResource( 3 )]
+position = Vector2( 96, -1792 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="Wave4" type="Node2D" parent="EnemyTray" index="5"]
+
+[node name="fire26" parent="EnemyTray/Wave4" index="0" instance=ExtResource( 3 )]
+position = Vector2( 56, -1936 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire27" parent="EnemyTray/Wave4" index="1" instance=ExtResource( 3 )]
+position = Vector2( 64, -1944 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire28" parent="EnemyTray/Wave4" index="2" instance=ExtResource( 3 )]
+position = Vector2( 72, -1952 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire29" parent="EnemyTray/Wave4" index="3" instance=ExtResource( 3 )]
+position = Vector2( 80, -1960 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire30" parent="EnemyTray/Wave4" index="4" instance=ExtResource( 3 )]
+position = Vector2( 88, -1968 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire31" parent="EnemyTray/Wave4" index="5" instance=ExtResource( 3 )]
+position = Vector2( 96, -1976 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire32" parent="EnemyTray/Wave4" index="6" instance=ExtResource( 3 )]
+position = Vector2( 104, -1984 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire33" parent="EnemyTray/Wave4" index="7" instance=ExtResource( 3 )]
+position = Vector2( 168, -1936 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire34" parent="EnemyTray/Wave4" index="8" instance=ExtResource( 3 )]
+position = Vector2( 160, -1944 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire35" parent="EnemyTray/Wave4" index="9" instance=ExtResource( 3 )]
+position = Vector2( 152, -1952 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire36" parent="EnemyTray/Wave4" index="10" instance=ExtResource( 3 )]
+position = Vector2( 144, -1960 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire37" parent="EnemyTray/Wave4" index="11" instance=ExtResource( 3 )]
+position = Vector2( 136, -1968 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire38" parent="EnemyTray/Wave4" index="12" instance=ExtResource( 3 )]
+position = Vector2( 128, -1976 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire39" parent="EnemyTray/Wave4" index="13" instance=ExtResource( 3 )]
+position = Vector2( 120, -1984 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire20" parent="EnemyTray/Wave4" index="14" instance=ExtResource( 3 )]
+position = Vector2( 16, -2136 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire21" parent="EnemyTray/Wave4" index="15" instance=ExtResource( 3 )]
+position = Vector2( 48, -2136 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire22" parent="EnemyTray/Wave4" index="16" instance=ExtResource( 3 )]
+position = Vector2( 96, -2136 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire23" parent="EnemyTray/Wave4" index="17" instance=ExtResource( 3 )]
+position = Vector2( 208, -2136 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire24" parent="EnemyTray/Wave4" index="18" instance=ExtResource( 3 )]
+position = Vector2( 176, -2136 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire25" parent="EnemyTray/Wave4" index="19" instance=ExtResource( 3 )]
+position = Vector2( 128, -2136 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="testenemy128" parent="EnemyTray/Wave4" index="20" instance=ExtResource( 3 )]
+position = Vector2( 184, -2104 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy129" parent="EnemyTray/Wave4" index="21" instance=ExtResource( 3 )]
+position = Vector2( 168, -2104 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy130" parent="EnemyTray/Wave4" index="22" instance=ExtResource( 3 )]
+position = Vector2( 152, -2104 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy131" parent="EnemyTray/Wave4" index="23" instance=ExtResource( 3 )]
+position = Vector2( 136, -2104 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy132" parent="EnemyTray/Wave4" index="24" instance=ExtResource( 3 )]
+position = Vector2( 120, -2104 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy133" parent="EnemyTray/Wave4" index="25" instance=ExtResource( 3 )]
+position = Vector2( 104, -2104 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy134" parent="EnemyTray/Wave4" index="26" instance=ExtResource( 3 )]
+position = Vector2( 88, -2104 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy135" parent="EnemyTray/Wave4" index="27" instance=ExtResource( 3 )]
+position = Vector2( 72, -2104 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy136" parent="EnemyTray/Wave4" index="28" instance=ExtResource( 3 )]
+position = Vector2( 56, -2104 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy137" parent="EnemyTray/Wave4" index="29" instance=ExtResource( 3 )]
+position = Vector2( 40, -2104 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy" parent="EnemyTray/Wave4" index="30" instance=ExtResource( 3 )]
+position = Vector2( 8, -1920 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy9" parent="EnemyTray/Wave4" index="31" instance=ExtResource( 3 )]
+position = Vector2( 8, -1888 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy10" parent="EnemyTray/Wave4" index="32" instance=ExtResource( 3 )]
+position = Vector2( 8, -1856 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy11" parent="EnemyTray/Wave4" index="33" instance=ExtResource( 3 )]
+position = Vector2( 8, -1824 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy2" parent="EnemyTray/Wave4" index="34" instance=ExtResource( 3 )]
+position = Vector2( 24, -1920 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy3" parent="EnemyTray/Wave4" index="35" instance=ExtResource( 3 )]
+position = Vector2( 40, -1920 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy4" parent="EnemyTray/Wave4" index="36" instance=ExtResource( 3 )]
+position = Vector2( 56, -1920 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy5" parent="EnemyTray/Wave4" index="37" instance=ExtResource( 3 )]
+position = Vector2( 216, -1920 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy6" parent="EnemyTray/Wave4" index="38" instance=ExtResource( 3 )]
+position = Vector2( 200, -1920 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy7" parent="EnemyTray/Wave4" index="39" instance=ExtResource( 3 )]
+position = Vector2( 184, -1920 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy8" parent="EnemyTray/Wave4" index="40" instance=ExtResource( 3 )]
+position = Vector2( 168, -1920 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="Wave5" type="Node2D" parent="EnemyTray" index="6"]
+
+[node name="testenemy9" parent="EnemyTray/Wave5" index="0" instance=ExtResource( 3 )]
+position = Vector2( 8, -2232 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy10" parent="EnemyTray/Wave5" index="1" instance=ExtResource( 3 )]
+position = Vector2( 24, -2232 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy11" parent="EnemyTray/Wave5" index="2" instance=ExtResource( 3 )]
+position = Vector2( 40, -2232 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy12" parent="EnemyTray/Wave5" index="3" instance=ExtResource( 3 )]
+position = Vector2( 56, -2232 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy13" parent="EnemyTray/Wave5" index="4" instance=ExtResource( 3 )]
+position = Vector2( 72, -2232 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy14" parent="EnemyTray/Wave5" index="5" instance=ExtResource( 3 )]
+position = Vector2( 88, -2232 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy15" parent="EnemyTray/Wave5" index="6" instance=ExtResource( 3 )]
+position = Vector2( 104, -2232 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy16" parent="EnemyTray/Wave5" index="7" instance=ExtResource( 3 )]
+position = Vector2( 120, -2232 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy17" parent="EnemyTray/Wave5" index="8" instance=ExtResource( 3 )]
+position = Vector2( 136, -2232 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy18" parent="EnemyTray/Wave5" index="9" instance=ExtResource( 3 )]
+position = Vector2( 152, -2232 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy19" parent="EnemyTray/Wave5" index="10" instance=ExtResource( 3 )]
+position = Vector2( 216, -2232 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy20" parent="EnemyTray/Wave5" index="11" instance=ExtResource( 3 )]
+position = Vector2( 216, -2248 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy21" parent="EnemyTray/Wave5" index="12" instance=ExtResource( 3 )]
+position = Vector2( 152, -2248 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy22" parent="EnemyTray/Wave5" index="13" instance=ExtResource( 3 )]
+position = Vector2( 152, -2264 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy23" parent="EnemyTray/Wave5" index="14" instance=ExtResource( 3 )]
+position = Vector2( 216, -2264 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy24" parent="EnemyTray/Wave5" index="15" instance=ExtResource( 3 )]
+position = Vector2( 216, -2280 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy25" parent="EnemyTray/Wave5" index="16" instance=ExtResource( 3 )]
+position = Vector2( 152, -2280 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy26" parent="EnemyTray/Wave5" index="17" instance=ExtResource( 3 )]
+position = Vector2( 152, -2296 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy27" parent="EnemyTray/Wave5" index="18" instance=ExtResource( 3 )]
+position = Vector2( 216, -2296 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy28" parent="EnemyTray/Wave5" index="19" instance=ExtResource( 3 )]
+position = Vector2( 216, -2312 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy29" parent="EnemyTray/Wave5" index="20" instance=ExtResource( 3 )]
+position = Vector2( 216, -2328 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy30" parent="EnemyTray/Wave5" index="21" instance=ExtResource( 3 )]
+position = Vector2( 136, -2264 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy31" parent="EnemyTray/Wave5" index="22" instance=ExtResource( 3 )]
+position = Vector2( 120, -2264 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy32" parent="EnemyTray/Wave5" index="23" instance=ExtResource( 3 )]
+position = Vector2( 104, -2264 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy33" parent="EnemyTray/Wave5" index="24" instance=ExtResource( 3 )]
+position = Vector2( 88, -2264 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy34" parent="EnemyTray/Wave5" index="25" instance=ExtResource( 3 )]
+position = Vector2( 72, -2264 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy35" parent="EnemyTray/Wave5" index="26" instance=ExtResource( 3 )]
+position = Vector2( 72, -2248 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy36" parent="EnemyTray/Wave5" index="27" instance=ExtResource( 3 )]
+position = Vector2( 24, -2248 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy37" parent="EnemyTray/Wave5" index="28" instance=ExtResource( 3 )]
+position = Vector2( 24, -2264 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy38" parent="EnemyTray/Wave5" index="29" instance=ExtResource( 3 )]
+position = Vector2( 40, -2248 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy39" parent="EnemyTray/Wave5" index="30" instance=ExtResource( 3 )]
+position = Vector2( 56, -2248 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy40" parent="EnemyTray/Wave5" index="31" instance=ExtResource( 3 )]
+position = Vector2( 8, -2264 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy41" parent="EnemyTray/Wave5" index="32" instance=ExtResource( 3 )]
+position = Vector2( 216, -2344 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy42" parent="EnemyTray/Wave5" index="33" instance=ExtResource( 3 )]
+position = Vector2( 216, -2360 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy43" parent="EnemyTray/Wave5" index="34" instance=ExtResource( 3 )]
+position = Vector2( 216, -2376 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy44" parent="EnemyTray/Wave5" index="35" instance=ExtResource( 3 )]
+position = Vector2( 200, -2376 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy45" parent="EnemyTray/Wave5" index="36" instance=ExtResource( 3 )]
+position = Vector2( 184, -2376 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy46" parent="EnemyTray/Wave5" index="37" instance=ExtResource( 3 )]
+position = Vector2( 168, -2376 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy47" parent="EnemyTray/Wave5" index="38" instance=ExtResource( 3 )]
+position = Vector2( 152, -2376 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy48" parent="EnemyTray/Wave5" index="39" instance=ExtResource( 3 )]
+position = Vector2( 136, -2376 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy49" parent="EnemyTray/Wave5" index="40" instance=ExtResource( 3 )]
+position = Vector2( 120, -2376 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy50" parent="EnemyTray/Wave5" index="41" instance=ExtResource( 3 )]
+position = Vector2( 104, -2376 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy51" parent="EnemyTray/Wave5" index="42" instance=ExtResource( 3 )]
+position = Vector2( 88, -2376 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy76" parent="EnemyTray/Wave5" index="43" instance=ExtResource( 3 )]
+position = Vector2( 216, -2392 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy75" parent="EnemyTray/Wave5" index="44" instance=ExtResource( 3 )]
+position = Vector2( 200, -2392 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy74" parent="EnemyTray/Wave5" index="45" instance=ExtResource( 3 )]
+position = Vector2( 184, -2392 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy73" parent="EnemyTray/Wave5" index="46" instance=ExtResource( 3 )]
+position = Vector2( 168, -2392 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy72" parent="EnemyTray/Wave5" index="47" instance=ExtResource( 3 )]
+position = Vector2( 152, -2392 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy71" parent="EnemyTray/Wave5" index="48" instance=ExtResource( 3 )]
+position = Vector2( 136, -2392 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy70" parent="EnemyTray/Wave5" index="49" instance=ExtResource( 3 )]
+position = Vector2( 120, -2392 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy69" parent="EnemyTray/Wave5" index="50" instance=ExtResource( 3 )]
+position = Vector2( 104, -2392 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy68" parent="EnemyTray/Wave5" index="51" instance=ExtResource( 3 )]
+position = Vector2( 88, -2392 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy85" parent="EnemyTray/Wave5" index="52" instance=ExtResource( 3 )]
+position = Vector2( 216, -2408 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy84" parent="EnemyTray/Wave5" index="53" instance=ExtResource( 3 )]
+position = Vector2( 200, -2408 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy83" parent="EnemyTray/Wave5" index="54" instance=ExtResource( 3 )]
+position = Vector2( 184, -2408 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy82" parent="EnemyTray/Wave5" index="55" instance=ExtResource( 3 )]
+position = Vector2( 168, -2408 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy81" parent="EnemyTray/Wave5" index="56" instance=ExtResource( 3 )]
+position = Vector2( 152, -2408 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy80" parent="EnemyTray/Wave5" index="57" instance=ExtResource( 3 )]
+position = Vector2( 136, -2408 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy79" parent="EnemyTray/Wave5" index="58" instance=ExtResource( 3 )]
+position = Vector2( 120, -2408 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy78" parent="EnemyTray/Wave5" index="59" instance=ExtResource( 3 )]
+position = Vector2( 104, -2408 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy77" parent="EnemyTray/Wave5" index="60" instance=ExtResource( 3 )]
+position = Vector2( 88, -2408 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy52" parent="EnemyTray/Wave5" index="61" instance=ExtResource( 3 )]
+position = Vector2( 88, -2360 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy53" parent="EnemyTray/Wave5" index="62" instance=ExtResource( 3 )]
+position = Vector2( 88, -2344 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy54" parent="EnemyTray/Wave5" index="63" instance=ExtResource( 3 )]
+position = Vector2( 88, -2328 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy57" parent="EnemyTray/Wave5" index="64" instance=ExtResource( 3 )]
+position = Vector2( 72, -2328 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy58" parent="EnemyTray/Wave5" index="65" instance=ExtResource( 3 )]
+position = Vector2( 72, -2344 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy59" parent="EnemyTray/Wave5" index="66" instance=ExtResource( 3 )]
+position = Vector2( 72, -2360 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy60" parent="EnemyTray/Wave5" index="67" instance=ExtResource( 3 )]
+position = Vector2( 72, -2376 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy61" parent="EnemyTray/Wave5" index="68" instance=ExtResource( 3 )]
+position = Vector2( 8, -2280 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy62" parent="EnemyTray/Wave5" index="69" instance=ExtResource( 3 )]
+position = Vector2( 8, -2296 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy63" parent="EnemyTray/Wave5" index="70" instance=ExtResource( 3 )]
+position = Vector2( 8, -2312 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy64" parent="EnemyTray/Wave5" index="71" instance=ExtResource( 3 )]
+position = Vector2( 8, -2328 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy65" parent="EnemyTray/Wave5" index="72" instance=ExtResource( 3 )]
+position = Vector2( 8, -2344 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy66" parent="EnemyTray/Wave5" index="73" instance=ExtResource( 3 )]
+position = Vector2( 8, -2360 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy67" parent="EnemyTray/Wave5" index="74" instance=ExtResource( 3 )]
+position = Vector2( 8, -2376 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="fire40" parent="EnemyTray/Wave5" index="75" instance=ExtResource( 3 )]
+position = Vector2( 40, -2264 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire41" parent="EnemyTray/Wave5" index="76" instance=ExtResource( 3 )]
+position = Vector2( 32, -2272 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire42" parent="EnemyTray/Wave5" index="77" instance=ExtResource( 3 )]
+position = Vector2( 56, -2264 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire43" parent="EnemyTray/Wave5" index="78" instance=ExtResource( 3 )]
+position = Vector2( 64, -2272 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire44" parent="EnemyTray/Wave5" index="79" instance=ExtResource( 3 )]
+position = Vector2( 120, -2424 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire45" parent="EnemyTray/Wave5" index="80" instance=ExtResource( 3 )]
+position = Vector2( 104, -2424 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire46" parent="EnemyTray/Wave5" index="81" instance=ExtResource( 3 )]
+position = Vector2( 184, -2424 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire47" parent="EnemyTray/Wave5" index="82" instance=ExtResource( 3 )]
+position = Vector2( 200, -2424 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="Wave6" type="Node2D" parent="EnemyTray" index="7"]
+
+[node name="testenemy68" parent="EnemyTray/Wave6" index="0" instance=ExtResource( 3 )]
+position = Vector2( 8, -2392 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy69" parent="EnemyTray/Wave6" index="1" instance=ExtResource( 3 )]
+position = Vector2( 72, -2392 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy70" parent="EnemyTray/Wave6" index="2" instance=ExtResource( 3 )]
+position = Vector2( 72, -2408 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy71" parent="EnemyTray/Wave6" index="3" instance=ExtResource( 3 )]
+position = Vector2( 8, -2408 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy72" parent="EnemyTray/Wave6" index="4" instance=ExtResource( 3 )]
+position = Vector2( 8, -2424 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy73" parent="EnemyTray/Wave6" index="5" instance=ExtResource( 3 )]
+position = Vector2( 72, -2424 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy74" parent="EnemyTray/Wave6" index="6" instance=ExtResource( 3 )]
+position = Vector2( 72, -2440 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy75" parent="EnemyTray/Wave6" index="7" instance=ExtResource( 3 )]
+position = Vector2( 8, -2440 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy76" parent="EnemyTray/Wave6" index="8" instance=ExtResource( 3 )]
+position = Vector2( 8, -2456 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy77" parent="EnemyTray/Wave6" index="9" instance=ExtResource( 3 )]
+position = Vector2( 72, -2456 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy78" parent="EnemyTray/Wave6" index="10" instance=ExtResource( 3 )]
+position = Vector2( 8, -2472 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy79" parent="EnemyTray/Wave6" index="11" instance=ExtResource( 3 )]
+position = Vector2( 72, -2472 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy80" parent="EnemyTray/Wave6" index="12" instance=ExtResource( 3 )]
+position = Vector2( 8, -2488 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy81" parent="EnemyTray/Wave6" index="13" instance=ExtResource( 3 )]
+position = Vector2( 88, -2472 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy82" parent="EnemyTray/Wave6" index="14" instance=ExtResource( 3 )]
+position = Vector2( 104, -2472 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy83" parent="EnemyTray/Wave6" index="15" instance=ExtResource( 3 )]
+position = Vector2( 120, -2488 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy84" parent="EnemyTray/Wave6" index="16" instance=ExtResource( 3 )]
+position = Vector2( 136, -2504 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy85" parent="EnemyTray/Wave6" index="17" instance=ExtResource( 3 )]
+position = Vector2( 152, -2520 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy86" parent="EnemyTray/Wave6" index="18" instance=ExtResource( 3 )]
+position = Vector2( 168, -2536 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy87" parent="EnemyTray/Wave6" index="19" instance=ExtResource( 3 )]
+position = Vector2( 184, -2552 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy88" parent="EnemyTray/Wave6" index="20" instance=ExtResource( 3 )]
+position = Vector2( 200, -2568 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy89" parent="EnemyTray/Wave6" index="21" instance=ExtResource( 3 )]
+position = Vector2( 216, -2584 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy90" parent="EnemyTray/Wave6" index="22" instance=ExtResource( 3 )]
+position = Vector2( 8, -2504 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy91" parent="EnemyTray/Wave6" index="23" instance=ExtResource( 3 )]
+position = Vector2( 8, -2520 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy92" parent="EnemyTray/Wave6" index="24" instance=ExtResource( 3 )]
+position = Vector2( 8, -2536 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy93" parent="EnemyTray/Wave6" index="25" instance=ExtResource( 3 )]
+position = Vector2( 8, -2552 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy94" parent="EnemyTray/Wave6" index="26" instance=ExtResource( 3 )]
+position = Vector2( 8, -2568 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy95" parent="EnemyTray/Wave6" index="27" instance=ExtResource( 3 )]
+position = Vector2( 8, -2584 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy96" parent="EnemyTray/Wave6" index="28" instance=ExtResource( 3 )]
+position = Vector2( 8, -2600 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy97" parent="EnemyTray/Wave6" index="29" instance=ExtResource( 3 )]
+position = Vector2( 24, -2600 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy98" parent="EnemyTray/Wave6" index="30" instance=ExtResource( 3 )]
+position = Vector2( 40, -2600 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy99" parent="EnemyTray/Wave6" index="31" instance=ExtResource( 3 )]
+position = Vector2( 56, -2600 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy100" parent="EnemyTray/Wave6" index="32" instance=ExtResource( 3 )]
+position = Vector2( 72, -2600 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy101" parent="EnemyTray/Wave6" index="33" instance=ExtResource( 3 )]
+position = Vector2( 72, -2616 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy102" parent="EnemyTray/Wave6" index="34" instance=ExtResource( 3 )]
+position = Vector2( 72, -2632 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy103" parent="EnemyTray/Wave6" index="35" instance=ExtResource( 3 )]
+position = Vector2( 88, -2632 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy104" parent="EnemyTray/Wave6" index="36" instance=ExtResource( 3 )]
+position = Vector2( 104, -2632 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy105" parent="EnemyTray/Wave6" index="37" instance=ExtResource( 3 )]
+position = Vector2( 104, -2648 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy106" parent="EnemyTray/Wave6" index="38" instance=ExtResource( 3 )]
+position = Vector2( 104, -2664 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy107" parent="EnemyTray/Wave6" index="39" instance=ExtResource( 3 )]
+position = Vector2( 120, -2664 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy108" parent="EnemyTray/Wave6" index="40" instance=ExtResource( 3 )]
+position = Vector2( 136, -2664 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy109" parent="EnemyTray/Wave6" index="41" instance=ExtResource( 3 )]
+position = Vector2( 136, -2680 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy110" parent="EnemyTray/Wave6" index="42" instance=ExtResource( 3 )]
+position = Vector2( 136, -2696 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy111" parent="EnemyTray/Wave6" index="43" instance=ExtResource( 3 )]
+position = Vector2( 216, -2600 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy112" parent="EnemyTray/Wave6" index="44" instance=ExtResource( 3 )]
+position = Vector2( 216, -2616 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy113" parent="EnemyTray/Wave6" index="45" instance=ExtResource( 3 )]
+position = Vector2( 216, -2632 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy114" parent="EnemyTray/Wave6" index="46" instance=ExtResource( 3 )]
+position = Vector2( 216, -2648 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy115" parent="EnemyTray/Wave6" index="47" instance=ExtResource( 3 )]
+position = Vector2( 216, -2664 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy116" parent="EnemyTray/Wave6" index="48" instance=ExtResource( 3 )]
+position = Vector2( 216, -2680 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy117" parent="EnemyTray/Wave6" index="49" instance=ExtResource( 3 )]
+position = Vector2( 216, -2696 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy118" parent="EnemyTray/Wave6" index="50" instance=ExtResource( 3 )]
+position = Vector2( 120, -2712 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy119" parent="EnemyTray/Wave6" index="51" instance=ExtResource( 3 )]
+position = Vector2( 104, -2728 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy120" parent="EnemyTray/Wave6" index="52" instance=ExtResource( 3 )]
+position = Vector2( 88, -2744 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy121" parent="EnemyTray/Wave6" index="53" instance=ExtResource( 3 )]
+position = Vector2( 72, -2760 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy122" parent="EnemyTray/Wave6" index="54" instance=ExtResource( 3 )]
+position = Vector2( 56, -2776 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy123" parent="EnemyTray/Wave6" index="55" instance=ExtResource( 3 )]
+position = Vector2( 40, -2792 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy124" parent="EnemyTray/Wave6" index="56" instance=ExtResource( 3 )]
+position = Vector2( 24, -2808 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy125" parent="EnemyTray/Wave6" index="57" instance=ExtResource( 3 )]
+position = Vector2( 8, -2824 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy126" parent="EnemyTray/Wave6" index="58" instance=ExtResource( 3 )]
+position = Vector2( 200, -2712 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy127" parent="EnemyTray/Wave6" index="59" instance=ExtResource( 3 )]
+position = Vector2( 184, -2728 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy128" parent="EnemyTray/Wave6" index="60" instance=ExtResource( 3 )]
+position = Vector2( 168, -2744 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy129" parent="EnemyTray/Wave6" index="61" instance=ExtResource( 3 )]
+position = Vector2( 152, -2760 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy130" parent="EnemyTray/Wave6" index="62" instance=ExtResource( 3 )]
+position = Vector2( 136, -2776 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy131" parent="EnemyTray/Wave6" index="63" instance=ExtResource( 3 )]
+position = Vector2( 120, -2792 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy132" parent="EnemyTray/Wave6" index="64" instance=ExtResource( 3 )]
+position = Vector2( 104, -2808 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy133" parent="EnemyTray/Wave6" index="65" instance=ExtResource( 3 )]
+position = Vector2( 88, -2824 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy134" parent="EnemyTray/Wave6" index="66" instance=ExtResource( 3 )]
+position = Vector2( 104, -2840 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy135" parent="EnemyTray/Wave6" index="67" instance=ExtResource( 3 )]
+position = Vector2( 120, -2856 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy136" parent="EnemyTray/Wave6" index="68" instance=ExtResource( 3 )]
+position = Vector2( 136, -2872 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy137" parent="EnemyTray/Wave6" index="69" instance=ExtResource( 3 )]
+position = Vector2( 152, -2888 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy138" parent="EnemyTray/Wave6" index="70" instance=ExtResource( 3 )]
+position = Vector2( 168, -2904 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy139" parent="EnemyTray/Wave6" index="71" instance=ExtResource( 3 )]
+position = Vector2( 184, -2920 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy140" parent="EnemyTray/Wave6" index="72" instance=ExtResource( 3 )]
+position = Vector2( 200, -2936 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy141" parent="EnemyTray/Wave6" index="73" instance=ExtResource( 3 )]
+position = Vector2( 216, -2952 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy142" parent="EnemyTray/Wave6" index="74" instance=ExtResource( 3 )]
+position = Vector2( 8, -2840 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy143" parent="EnemyTray/Wave6" index="75" instance=ExtResource( 3 )]
+position = Vector2( 8, -2856 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy144" parent="EnemyTray/Wave6" index="76" instance=ExtResource( 3 )]
+position = Vector2( 8, -2872 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy145" parent="EnemyTray/Wave6" index="77" instance=ExtResource( 3 )]
+position = Vector2( 8, -2888 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy146" parent="EnemyTray/Wave6" index="78" instance=ExtResource( 3 )]
+position = Vector2( 8, -2904 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy147" parent="EnemyTray/Wave6" index="79" instance=ExtResource( 3 )]
+position = Vector2( 8, -2920 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy148" parent="EnemyTray/Wave6" index="80" instance=ExtResource( 3 )]
+position = Vector2( 8, -2936 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy149" parent="EnemyTray/Wave6" index="81" instance=ExtResource( 3 )]
+position = Vector2( 8, -2952 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy150" parent="EnemyTray/Wave6" index="82" instance=ExtResource( 3 )]
+position = Vector2( 8, -2968 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy151" parent="EnemyTray/Wave6" index="83" instance=ExtResource( 3 )]
+position = Vector2( 24, -2968 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy152" parent="EnemyTray/Wave6" index="84" instance=ExtResource( 3 )]
+position = Vector2( 40, -2968 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy153" parent="EnemyTray/Wave6" index="85" instance=ExtResource( 3 )]
+position = Vector2( 56, -2968 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy154" parent="EnemyTray/Wave6" index="86" instance=ExtResource( 3 )]
+position = Vector2( 72, -2968 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy155" parent="EnemyTray/Wave6" index="87" instance=ExtResource( 3 )]
+position = Vector2( 88, -2968 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy156" parent="EnemyTray/Wave6" index="88" instance=ExtResource( 3 )]
+position = Vector2( 104, -2968 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy157" parent="EnemyTray/Wave6" index="89" instance=ExtResource( 3 )]
+position = Vector2( 120, -2968 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy158" parent="EnemyTray/Wave6" index="90" instance=ExtResource( 3 )]
+position = Vector2( 136, -2968 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy159" parent="EnemyTray/Wave6" index="91" instance=ExtResource( 3 )]
+position = Vector2( 152, -2968 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy160" parent="EnemyTray/Wave6" index="92" instance=ExtResource( 3 )]
+position = Vector2( 168, -2968 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy161" parent="EnemyTray/Wave6" index="93" instance=ExtResource( 3 )]
+position = Vector2( 184, -2968 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy162" parent="EnemyTray/Wave6" index="94" instance=ExtResource( 3 )]
+position = Vector2( 200, -2968 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="testenemy163" parent="EnemyTray/Wave6" index="95" instance=ExtResource( 3 )]
+position = Vector2( 216, -2968 )
+enemy_to_spawn = ExtResource( 5 )
+
+[node name="fire48" parent="EnemyTray/Wave6" index="96" instance=ExtResource( 3 )]
+position = Vector2( 40, -2472 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire49" parent="EnemyTray/Wave6" index="97" instance=ExtResource( 3 )]
+position = Vector2( 40, -2560 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire50" parent="EnemyTray/Wave6" index="98" instance=ExtResource( 3 )]
+position = Vector2( 80, -2576 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire51" parent="EnemyTray/Wave6" index="99" instance=ExtResource( 3 )]
+position = Vector2( 120, -2592 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire52" parent="EnemyTray/Wave6" index="100" instance=ExtResource( 3 )]
+position = Vector2( 160, -2608 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire53" parent="EnemyTray/Wave6" index="101" instance=ExtResource( 3 )]
+position = Vector2( 192, -2624 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire54" parent="EnemyTray/Wave6" index="102" instance=ExtResource( 3 )]
+position = Vector2( 168, -2696 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire55" parent="EnemyTray/Wave6" index="103" instance=ExtResource( 3 )]
+position = Vector2( 176, -2760 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire56" parent="EnemyTray/Wave6" index="104" instance=ExtResource( 3 )]
+position = Vector2( 128, -2832 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire57" parent="EnemyTray/Wave6" index="105" instance=ExtResource( 3 )]
+position = Vector2( 32, -2928 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire58" parent="EnemyTray/Wave6" index="106" instance=ExtResource( 3 )]
+position = Vector2( 64, -2952 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire59" parent="EnemyTray/Wave6" index="107" instance=ExtResource( 3 )]
+position = Vector2( 104, -2976 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire60" parent="EnemyTray/Wave6" index="108" instance=ExtResource( 3 )]
+position = Vector2( 136, -3000 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire61" parent="EnemyTray/Wave6" index="109" instance=ExtResource( 3 )]
+position = Vector2( 184, -3024 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire62" parent="EnemyTray/Wave6" index="110" instance=ExtResource( 3 )]
+position = Vector2( 160, -3016 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="Wave8" type="Node2D" parent="EnemyTray" index="8"]
+
+[node name="fire63" parent="EnemyTray/Wave8" index="0" instance=ExtResource( 3 )]
+position = Vector2( 8, -3128 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire64" parent="EnemyTray/Wave8" index="1" instance=ExtResource( 3 )]
+position = Vector2( 24, -3128 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire65" parent="EnemyTray/Wave8" index="2" instance=ExtResource( 3 )]
+position = Vector2( 40, -3128 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire66" parent="EnemyTray/Wave8" index="3" instance=ExtResource( 3 )]
+position = Vector2( 216, -3128 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire67" parent="EnemyTray/Wave8" index="4" instance=ExtResource( 3 )]
+position = Vector2( 200, -3128 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire68" parent="EnemyTray/Wave8" index="5" instance=ExtResource( 3 )]
+position = Vector2( 184, -3128 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire69" parent="EnemyTray/Wave8" index="6" instance=ExtResource( 3 )]
+position = Vector2( 72, -3200 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire70" parent="EnemyTray/Wave8" index="7" instance=ExtResource( 3 )]
+position = Vector2( 88, -3200 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire71" parent="EnemyTray/Wave8" index="8" instance=ExtResource( 3 )]
+position = Vector2( 104, -3224 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire72" parent="EnemyTray/Wave8" index="9" instance=ExtResource( 3 )]
+position = Vector2( 152, -3200 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire73" parent="EnemyTray/Wave8" index="10" instance=ExtResource( 3 )]
+position = Vector2( 136, -3200 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire74" parent="EnemyTray/Wave8" index="11" instance=ExtResource( 3 )]
+position = Vector2( 120, -3224 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire75" parent="EnemyTray/Wave8" index="12" instance=ExtResource( 3 )]
+position = Vector2( 24, -3168 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire76" parent="EnemyTray/Wave8" index="13" instance=ExtResource( 3 )]
+position = Vector2( 200, -3168 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire77" parent="EnemyTray/Wave8" index="14" instance=ExtResource( 3 )]
+position = Vector2( 48, -3312 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire78" parent="EnemyTray/Wave8" index="15" instance=ExtResource( 3 )]
+position = Vector2( 40, -3320 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire79" parent="EnemyTray/Wave8" index="16" instance=ExtResource( 3 )]
+position = Vector2( 56, -3320 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire80" parent="EnemyTray/Wave8" index="17" instance=ExtResource( 3 )]
+position = Vector2( 48, -3328 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire81" parent="EnemyTray/Wave8" index="18" instance=ExtResource( 3 )]
+position = Vector2( 168, -3320 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire82" parent="EnemyTray/Wave8" index="19" instance=ExtResource( 3 )]
+position = Vector2( 176, -3328 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire83" parent="EnemyTray/Wave8" index="20" instance=ExtResource( 3 )]
+position = Vector2( 184, -3320 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire84" parent="EnemyTray/Wave8" index="21" instance=ExtResource( 3 )]
+position = Vector2( 176, -3312 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire88" parent="EnemyTray/Wave8" index="22" instance=ExtResource( 3 )]
+position = Vector2( 48, -3392 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire87" parent="EnemyTray/Wave8" index="23" instance=ExtResource( 3 )]
+position = Vector2( 80, -3400 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire86" parent="EnemyTray/Wave8" index="24" instance=ExtResource( 3 )]
+position = Vector2( 144, -3400 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="fire85" parent="EnemyTray/Wave8" index="25" instance=ExtResource( 3 )]
+position = Vector2( 176, -3392 )
+enemy_to_spawn = ExtResource( 4 )

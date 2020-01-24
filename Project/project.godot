@@ -1,0 +1,289 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "BrightnessShader",
+"language": "GDScript",
+"path": "res://Lib/Instanceable/BrightnessShader/BrightnessShader.gd"
+}, {
+"base": "Node",
+"class": "BulletBehavior",
+"language": "GDScript",
+"path": "res://Lib/Instanceable/BulletBehavior/BulletBehavior.gd"
+}, {
+"base": "Node2D",
+"class": "DamagePopup",
+"language": "GDScript",
+"path": "res://GameObject/DamagePopup/DamagePopup.gd"
+}, {
+"base": "Node2D",
+"class": "DamagePopupTurret",
+"language": "GDScript",
+"path": "res://GameObject/DamagePopupTurret/DamagePopupTurret.gd"
+}, {
+"base": "Node",
+"class": "EightDirectionBehavior",
+"language": "GDScript",
+"path": "res://Lib/Instanceable/8DirectionBehavior/8DirectionBehavior.gd"
+}, {
+"base": "Entity",
+"class": "EnemyCore",
+"language": "GDScript",
+"path": "res://GameObject/EnemyCore/Core/EnemyCore.gd"
+}, {
+"base": "EnemyCore",
+"class": "EnemyProjectileCore",
+"language": "GDScript",
+"path": "res://GameObject/EnemyProjectile/Core/EnemyProjectileCore.gd"
+}, {
+"base": "Node2D",
+"class": "EnemySpawner",
+"language": "GDScript",
+"path": "res://GameObject/EnemySpawner/EnemySpawner.gd"
+}, {
+"base": "Node2D",
+"class": "EnemyTurret",
+"language": "GDScript",
+"path": "res://GameObject/EnemyTurret/EnemyTurret.gd"
+}, {
+"base": "Node2D",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://GameObject/Entity/Entity.gd"
+}, {
+"base": "Node",
+"class": "ExperienceSystem",
+"language": "GDScript",
+"path": "res://GameObject/ExperienceSystem/ExperienceSystem.gd"
+}, {
+"base": "Button",
+"class": "ExtendedButton",
+"language": "GDScript",
+"path": "res://GlobalClass/ExtendedButton.gd"
+}, {
+"base": "Node",
+"class": "InvincibleState",
+"language": "GDScript",
+"path": "res://GameObject/InvincibleState/InvincibleState.gd"
+}, {
+"base": "Node",
+"class": "LevelCore",
+"language": "GDScript",
+"path": "res://Scenes/Levels/Core/Level.gd"
+}, {
+"base": "Entity",
+"class": "PlayerEquipmentCore",
+"language": "GDScript",
+"path": "res://GameObject/PlayerEquipmentCore/PlayerEquipmentCore.gd"
+}, {
+"base": "PlayerEquipmentCore",
+"class": "PlayerModule",
+"language": "GDScript",
+"path": "res://GameObject/PlayerModule/Core/PlayerModule.gd"
+}, {
+"base": "Entity",
+"class": "PlayerProjectile",
+"language": "GDScript",
+"path": "res://GameObject/PlayerProjectile/Core/PlayerProjectile.gd"
+}, {
+"base": "PlayerProjectile",
+"class": "PlayerProjectileDebris",
+"language": "GDScript",
+"path": "res://GameObject/PlayerProjectile/Debris.gd"
+}, {
+"base": "PlayerEquipmentCore",
+"class": "PlayerSatelliteCore",
+"language": "GDScript",
+"path": "res://GameObject/PlayerSatellite/Core/PlayerSatellite.gd"
+}, {
+"base": "PlayerEquipmentCore",
+"class": "PlayerShieldCore",
+"language": "GDScript",
+"path": "res://GameObject/PlayerShield/Core/PlayerShield.gd"
+}, {
+"base": "Entity",
+"class": "PlayerShip",
+"language": "GDScript",
+"path": "res://GameObject/PlayerShip/Core/PlayerShip.gd"
+}, {
+"base": "PlayerEquipmentCore",
+"class": "PlayerSuperpower",
+"language": "GDScript",
+"path": "res://GameObject/PlayerSuperpower/Core/PlayerSuperpower.gd"
+}, {
+"base": "PlayerEquipmentCore",
+"class": "PlayerWeaponCore",
+"language": "GDScript",
+"path": "res://GameObject/PlayerWeapon/Core/PlayerWeapon.gd"
+}, {
+"base": "Resource",
+"class": "ResItem",
+"language": "GDScript",
+"path": "res://GameDatabase/Item/Item.gd"
+}, {
+"base": "ResItem",
+"class": "ResItemEquip",
+"language": "GDScript",
+"path": "res://GameDatabase/Item/Equipment/Equipment.gd"
+}, {
+"base": "ResItemEquip",
+"class": "ResItemEquipModule",
+"language": "GDScript",
+"path": "res://GameDatabase/Item/Equipment/Modules/Module.gd"
+}, {
+"base": "ResItemEquip",
+"class": "ResItemEquipSatellite",
+"language": "GDScript",
+"path": "res://GameDatabase/Item/Equipment/Satellites/Satellite.gd"
+}, {
+"base": "ResItemEquip",
+"class": "ResItemEquipShield",
+"language": "GDScript",
+"path": "res://GameDatabase/Item/Equipment/Shields/Shield.gd"
+}, {
+"base": "ResItemEquip",
+"class": "ResItemEquipSuperpower",
+"language": "GDScript",
+"path": "res://GameDatabase/Item/Equipment/Superpowers/Superpower.gd"
+}, {
+"base": "ResItemEquip",
+"class": "ResItemEquipWeapon",
+"language": "GDScript",
+"path": "res://GameDatabase/Item/Equipment/Weapons/Weapon.gd"
+}, {
+"base": "Node",
+"class": "ShakeBehavior",
+"language": "GDScript",
+"path": "res://Lib/Instanceable/ShakeBehavior/ShakeBehavior.gd"
+}, {
+"base": "Node",
+"class": "SineBehavior2D",
+"language": "GDScript",
+"path": "res://Lib/Instanceable/SineBehavior2D/SineBehavior2D.gd"
+}, {
+"base": "Node",
+"class": "SpriteCycling",
+"language": "GDScript",
+"path": "res://Lib/Instanceable/SpriteCycling/SpriteCycling.gd"
+}, {
+"base": "Node",
+"class": "Util_DateTime",
+"language": "GDScript",
+"path": "res://Lib/Util/DateTime/DateTime.gd"
+} ]
+_global_script_class_icons={
+"BrightnessShader": "",
+"BulletBehavior": "",
+"DamagePopup": "",
+"DamagePopupTurret": "",
+"EightDirectionBehavior": "",
+"EnemyCore": "",
+"EnemyProjectileCore": "",
+"EnemySpawner": "",
+"EnemyTurret": "",
+"Entity": "",
+"ExperienceSystem": "",
+"ExtendedButton": "",
+"InvincibleState": "",
+"LevelCore": "",
+"PlayerEquipmentCore": "",
+"PlayerModule": "",
+"PlayerProjectile": "",
+"PlayerProjectileDebris": "",
+"PlayerSatelliteCore": "",
+"PlayerShieldCore": "",
+"PlayerShip": "",
+"PlayerSuperpower": "",
+"PlayerWeaponCore": "",
+"ResItem": "",
+"ResItemEquip": "",
+"ResItemEquipModule": "",
+"ResItemEquipSatellite": "",
+"ResItemEquipShield": "",
+"ResItemEquipSuperpower": "",
+"ResItemEquipWeapon": "",
+"ShakeBehavior": "",
+"SineBehavior2D": "",
+"SpriteCycling": "",
+"Util_DateTime": ""
+}
+
+[application]
+
+config/name="Shump - RPG"
+run/main_scene="res://Scenes/SplashScreen/SplashScreen.tscn"
+config/icon="res://Assets/Image/Enemy/test-moving-enemy.png"
+
+[autoload]
+
+AudioCenter="*res://Lib/Singleton/AudioCenter/AudioCenter.tscn"
+BattleServer="*res://Autoload/BattleServer.gd"
+EnemySpawnerData="*res://Autoload/EnemySpawnerData.gd"
+LevelServer="*res://Autoload/LevelServer.gd"
+LevelGUI="*res://Autoload/LevelGUI/LevelGUI.tscn"
+
+[display]
+
+window/size/width=224
+window/size/height=400
+window/dpi/allow_hidpi=true
+window/handheld/orientation="sensor_portrait"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
+
+[layer_names]
+
+2d_physics/layer_1="Players"
+2d_physics/layer_2="Player Projectiles"
+2d_physics/layer_3="Enemies"
+
+[physics]
+
+2d/cell_size=32
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=1
+quality/2d/use_pixel_snap=true
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pshot_normal.wav-8dc61376a53b426b48949b08b128e6d4.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sfx/Combat/pshot_normal.wav"
+dest_files=[ "res://.import/pshot_normal.wav-8dc61376a53b426b48949b08b128e6d4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

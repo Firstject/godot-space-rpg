@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://GameDatabase/Item/Equipment/Weapons/Weapon.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+item_name = ""
+desc = ""
+price = 0
+can_be_sold = true
+equip_type = 0
+rare_price = 0
+atk_bonus = 0.0
+def_bonus = 0.0
+hp_bonus = 0
+crit_bonus = 0.0
+rage_bonus = 0.0
+invis_length_bonus = 0.0
+fire_rate = 0.5
+experience_table = PoolIntArray( 30, 150, 400, 650, 1000, 1350, 1750, 2300, 3000, 3800, 4700, 5700, 6850, 8000, 10000, 12500, 16500, 22000, 30000 )
+beam_upgrades = PoolIntArray( 1, 2, 4, 7, 10, 15, 20 )

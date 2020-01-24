@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Lib/Instanceable/ShakeBehavior/ShakeBehavior.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, -2.5, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[node name="ShakeBehavior" type="Node"]
+script = ExtResource( 1 )
+shake_curve = SubResource( 1 )

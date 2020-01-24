@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GameObject/EnemyCore/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GameObject/EnemyProjectile/Core/EnemyProjectileCore.gd" type="Script" id=2]
+
+[node name="EnemyProjectileCore" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+base_hp = 1.0
+can_hit = false
+destroy_on_collide = true
+apply_invinc_on_collide_player = false
+is_collider = false
+can_take_collision_damage = false
+
+[node name="BulletBehavior" parent="." index="0"]
+active = true

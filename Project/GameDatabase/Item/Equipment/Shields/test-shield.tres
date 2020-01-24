@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://GameDatabase/Item/Equipment/Shields/Shield.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+item_name = ""
+desc = "The developer never knows that you have this. Nah! Don't tell anyone."
+price = 1
+can_be_sold = true
+equip_type = 0
+rare_price = 0
+atk_bonus = 0.0
+def_bonus = 7.0
+hp_bonus = 0
+crit_bonus = 0.01
+rage_bonus = 0.05
+invis_length_bonus = 0.1
+strength = 0.1
+recovery = 0.01
+recover_interval = 0.3
+interrupt_recovery_timer = 2.0
+can_interrupt = true
+block_collisions = false

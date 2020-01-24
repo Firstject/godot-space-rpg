@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GameObject/PlayerWeapon/Core/PlayerWeapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GameDatabase/Item/Equipment/Weapons/PulseCannon.tres" type="Resource" id=2]
+[ext_resource path="res://GameObject/PlayerProjectile/PulseBeam.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameObject/PlayerWeapon/PulseCannon.gd" type="Script" id=4]
+
+[node name="PulseCannon" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+equip_database = ExtResource( 2 )
+player_projectile = ExtResource( 3 )
+custom_spawn_code = true
+disabled = false

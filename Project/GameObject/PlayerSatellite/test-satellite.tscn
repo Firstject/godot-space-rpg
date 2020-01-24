@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GameObject/PlayerSatellite/Core/PlayerSatellite.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Theme/ClassicThemeV2/img/AnimatedButtonPanelFocus.tres" type="Texture" id=2]
+[ext_resource path="res://GameObject/PlayerProjectile/PulseBeam.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameDatabase/Item/Equipment/Satellites/test-satellite.tres" type="Resource" id=4]
+
+[node name="test-satellite" instance=ExtResource( 1 )]
+equip_database = ExtResource( 4 )
+can_fire = true
+projectile = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )

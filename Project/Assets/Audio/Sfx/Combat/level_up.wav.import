@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/level_up.wav-8ce1f9d09e98ebd9844ff2ff7ae2e589.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sfx/Combat/level_up.wav"
+dest_files=[ "res://.import/level_up.wav-8ce1f9d09e98ebd9844ff2ff7ae2e589.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

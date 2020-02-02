@@ -76,6 +76,7 @@ func _spawn() -> void:
 		return
 	
 	var enmy = enemy_to_spawn.instance() as EnemyCore
+	enmy.global_position = self.global_position
 	enmy.lv = LevelServer.current_enemy_lv
 	
 	match DEFAULT_SPAWN_TO_NODE_LOCATION:
@@ -85,7 +86,7 @@ func _spawn() -> void:
 			var sp_cy_node = get_tree().get_nodes_in_group("SpriteCycling")[0]
 			sp_cy_node.get_parent().add_child(enmy)
 	
-	enmy.global_position = self.global_position
+	
 	
 	
 

@@ -197,9 +197,8 @@ func _do_process(delta : float) -> void:
 			emit_signal("shake_finished")
 	
 	#Calculate a complete cycle of frequency.
-	while current_delta_passed > current_frequency_round_time:
-		current_delta_passed -= current_frequency_round_time 
-		can_change_position = true
+	current_delta_passed -= current_frequency_round_time 
+	can_change_position = true
 	
 	if not can_change_position and remaining_shake_duration != 0: #Frequency round time not reached
 		return

@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Image/PlayerProjectile/PulseCannon.png" type="Texture" id=1]
 [ext_resource path="res://GameObject/PlayerProjectile/Core/PlayerProjectile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GameObject/Effect/SmallExplosionEffect.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 8 )
 
 [node name="PulseBeam" instance=ExtResource( 2 )]
-base_atk = 0.0
+hit_effect = ExtResource( 3 )
 
 [node name="BulletBehavior" parent="." index="1"]
 speed = 420.0

@@ -1,15 +1,22 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Lib/Singleton/AudioCenter/AudioCenter.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Audio/Sfx/UI/GalaxHero_SFX_UI_Button1.wav" type="AudioStream" id=2]
-[ext_resource path="res://Assets/Audio/Sfx/Combat/beam_level.wav" type="AudioStream" id=3]
-[ext_resource path="res://Assets/Audio/Sfx/Combat/debris_star_kill.wav" type="AudioStream" id=4]
-[ext_resource path="res://Assets/Audio/Sfx/Combat/enemy_dead_small.wav" type="AudioStream" id=5]
-[ext_resource path="res://Assets/Audio/Sfx/Combat/player_hit.wav" type="AudioStream" id=6]
-[ext_resource path="res://Assets/Audio/Sfx/Combat/enemy_shoot_slow.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Audio/Sfx/Combat/pulse_beam.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Audio/Sfx/Combat/enemy_shot_1.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Audio/Sfx/Combat/super_ready.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Audio/Sfx/Combat/enemy_dead_1.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Audio/Sfx/Combat/credits.wav" type="AudioStream" id=7]
 [ext_resource path="res://Assets/Audio/Sfx/Combat/level_up.wav" type="AudioStream" id=8]
-[ext_resource path="res://Assets/Audio/Sfx/Combat/pshot_normal.wav" type="AudioStream" id=9]
-[ext_resource path="res://Assets/Audio/Sfx/Combat/shield_block.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Audio/Sfx/Combat/player_damage.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Audio/Sfx/Combat/ring_spread.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Audio/Sfx/Combat/shield_block.wav" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Audio/Sfx/Combat/enemy_dead_2.wav" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Audio/Sfx/Combat/enemy_shot_2.wav" type="AudioStream" id=13]
+[ext_resource path="res://Assets/Audio/Sfx/Combat/beam_level_up.wav" type="AudioStream" id=14]
+[ext_resource path="res://Assets/Audio/Sfx/Combat/debris_kill.wav" type="AudioStream" id=15]
+[ext_resource path="res://Assets/Audio/Sfx/Combat/enemy_hit.wav" type="AudioStream" id=16]
+[ext_resource path="res://Assets/Audio/Sfx/Combat/player_kill.wav" type="AudioStream" id=17]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dim"
@@ -122,29 +129,52 @@ anims/Undim = SubResource( 5 )
 
 [node name="Combat" type="Node" parent="SFX"]
 
-[node name="BeamLevel" type="AudioStreamPlayer" parent="SFX/Combat"]
-stream = ExtResource( 3 )
+[node name="BeamLevelUp" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 14 )
+
+[node name="Credits" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 7 )
 
 [node name="DebrisKill" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 15 )
+
+[node name="EnemyDead1" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 6 )
+
+[node name="EnemyDead2" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 12 )
+
+[node name="EnemyHit" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 16 )
+volume_db = -12.0
+
+[node name="EnemyShot1" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 4 )
 
-[node name="EnemyDeadSmall" type="AudioStreamPlayer" parent="SFX/Combat"]
-stream = ExtResource( 5 )
-
-[node name="EnemyShootSlow" type="AudioStreamPlayer" parent="SFX/Combat"]
-stream = ExtResource( 7 )
+[node name="EnemyShot2" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 13 )
 
 [node name="LevelUp" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 8 )
 
-[node name="PlayerHit" type="AudioStreamPlayer" parent="SFX/Combat"]
-stream = ExtResource( 6 )
-
-[node name="PShotNormal" type="AudioStreamPlayer" parent="SFX/Combat"]
+[node name="PlayerDamage" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 9 )
 
-[node name="ShieldBlock" type="AudioStreamPlayer" parent="SFX/Combat"]
+[node name="PlayerKill" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 17 )
+
+[node name="PulseBeam" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 3 )
+volume_db = -3.0
+
+[node name="RingSpread" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 10 )
+
+[node name="ShieldBlock" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 11 )
+
+[node name="SuperReady" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 5 )
 
 [node name="Environmental" type="Node" parent="SFX"]
 

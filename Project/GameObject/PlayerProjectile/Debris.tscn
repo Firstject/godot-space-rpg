@@ -53,6 +53,8 @@ tracks/2/keys = {
 
 [node name="Debris" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+destroy_on_hit = false
+hit_multiple = true
 
 [node name="BulletBehavior" parent="." index="1"]
 speed = 60.0

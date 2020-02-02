@@ -38,7 +38,7 @@ class_name EnemyTurret
 
 #If root_node is not specified, the owner of this node will be used
 #as a reference instead.
-export (NodePath) var root_node : NodePath
+export (NodePath) var root_node : NodePath = "./.."
 
 #Enemy object to spawn when either spawn_enemy() or spawn_enemy_proj()
 #function is called. Should inherits EnemyCore or unexpected
@@ -128,6 +128,8 @@ func _do_spawn_enemy(var entity_source : Entity, var custom_enemy_obj : PackedSc
 	if entity_source != null:
 		if inst_enemy_obj is Entity:
 			inst_enemy_obj.set_level_from_entity(entity_source)
+			inst_enemy_obj.clear_bonus_stats()
+			inst_enemy_obj.add_bonuses_from_entity(entity_source)
 	
 	return inst_enemy_obj
 

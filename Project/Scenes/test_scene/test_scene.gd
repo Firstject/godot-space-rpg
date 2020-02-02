@@ -22,13 +22,8 @@ func _ready() -> void:
 	for i in 100:
 		LV.append(i+1)
 	
-	for i in LV:
-		var a = ceil(1.3 * pow(i, 3.2) + (35 * i))
-		print("LV: ", i, ": ", a)
-	
-#	for i in LV:
-#		var exp_drop = ceil(120 * (pow(i, 0.9) / 6))
-#		print("LV: ", i, ": drop ", exp_drop)
+#	for i in 100:
+#		print(ceil(50 * (pow(i, 0.9) / 6)))
 
 
 func _on_QuitBtn_pressed() -> void:

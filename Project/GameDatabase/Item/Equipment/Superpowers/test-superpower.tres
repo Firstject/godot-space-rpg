@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource( 1 )
-item_name = "Dev Star"
-desc = "Summons a star to fight for you. Lasts 12 seconds."
+item_name = "Test SpPower MK1"
+desc = "Spread a ring of bullets around the ship."
 price = 0
 can_be_sold = true
 equip_type = 0
@@ -13,7 +13,8 @@ rare_price = 0
 atk_bonus = 0.0
 def_bonus = 0.0
 hp_bonus = 0
-crit_bonus = 0.0
+crit_rate_bonus = 0.0
+crit_damage_rate_bonus = 0.0
 rage_bonus = 0.0
 invis_length_bonus = 0.0
-hits_to_charge = 250
+hits_to_charge = 180

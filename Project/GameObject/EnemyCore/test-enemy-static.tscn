@@ -7,10 +7,11 @@
 extents = Vector2( 8, 8 )
 
 [node name="test-enemy-static" instance=ExtResource( 2 )]
-base_hp = 60.0
-base_atk = 13.0
-base_def = 15.0
-experience = 25
+base_atk = 28.0
+base_def = 45.0
+experience = 20
+debris_count = 5
+debris_damage = 20
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource( 1 )

@@ -45,10 +45,18 @@ onready var shield_anim = $MarginContainer/Control/PlayerHpBar/VBox/Shield/Shiel
 
 onready var showhide_ahim = $ShowHideAnim
 
+onready var pause_btn = $MarginContainer/Control/PauseButton
+onready var superpower_btn := $MarginContainer/Control/Utilities/SuperpowerButton as ExtendedButton
+onready var superpower_btn_anim = $MarginContainer/Control/Utilities/SuperpowerButton/ButtonAnim
+
 #---
 
 onready var level_text_anim = $LevelText/LevelTextAnim
 onready var level_text_hbox = $LevelText/TextHBox
+
+#---
+
+onready var level_end_anim = $LevelEnd/Anim
 
 #---
 
@@ -62,6 +70,7 @@ func _ready() -> void:
 	$MarginContainer.set_visible(false)
 	$LevelText.set_visible(false)
 	$Damage.set_visible(false)
+	BattleServer.connect("player_dead", self, "_on_BattleServer_player_dead")
 
 #-------------------------------------------------
 #      Virtual Methods
@@ -87,7 +96,10 @@ func start_stage_enter_anim() -> void:
 func update_player_status(player_obj : PlayerShip) -> void:
 	#Set HP/MaxHP
 	hp_text_max_value.set_text(str(player_obj.max_hp))
-	hp_text_curr_value.set_text(str(player_obj.hp))
+	if player_obj.hp < 0:
+		hp_text_curr_value.set_text("0")
+	else:
+		hp_text_curr_value.set_text(str(player_obj.hp))
 	hp_bar.set_max(player_obj.max_hp)
 	hp_bar.set_value(player_obj.hp)
 	_update_hp_anim(player_obj.get_hit_points_percentage())
@@ -113,7 +125,7 @@ func update_player_status(player_obj : PlayerShip) -> void:
 	if player_has_superpower:
 		super_bar.set_max(player_obj.get_superpower().get_max_power_point())
 		super_bar.set_value(player_obj.get_superpower().current_power_pts)
-		
+
 
 func update_level_name(new_name : String) -> void:
 	_qfree_level_text_hbox_children()
@@ -125,9 +137,36 @@ func play_level_up_anim() -> void:
 func play_dmg_anim() -> void:
 	damage_anim.play("Damage")
 
+func set_superpower_btn_disabled(disabled : bool) -> void:
+	if disabled: 
+		superpower_btn_anim.play("Used")
+	else:
+		superpower_btn_anim.play("Ready")
+	
+	superpower_btn.set_disabled(disabled)
+
+func start_level_clear_anim():
+	level_end_anim.play("Clear")
+	set_gui_visible(false)
+
+func start_level_fail_anim():
+	level_end_anim.play("Fail")
+	set_gui_visible(false)
+
 #-------------------------------------------------
 #      Connections
 #-------------------------------------------------
+
+func _on_RestartButton_pressed() -> void:
+	$LevelEnd.visible = false
+	get_tree().paused = false
+	set_superpower_btn_disabled(true)
+	get_tree().reload_current_scene()
+
+func _on_BattleServer_player_dead(player_obj) -> void:
+	yield(get_tree().create_timer(3.0), "timeout")
+	get_tree().paused = true
+	start_level_fail_anim()
 
 #-------------------------------------------------
 #      Private Methods
@@ -158,4 +197,6 @@ func _update_hp_anim(curr_hp_percent):
 #-------------------------------------------------
 #      Setters & Getters
 #-------------------------------------------------
+
+
 

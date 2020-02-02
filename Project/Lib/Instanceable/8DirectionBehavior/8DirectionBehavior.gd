@@ -59,21 +59,21 @@ export (float) var speed = 300.0
 export (DirectionType) var directions = DirectionType.EIGHT_DIRECTIONS
 
 #Default action key for a controlled movement of move left.
-export (String) var default_control_left = "ui_left"
+export (String) var default_control_left = "game_left"
 
 #Default action key for a controlled movement of move right.
-export (String) var default_control_right = "ui_right"
+export (String) var default_control_right = "game_right"
 
 #Default action key for a controlled movement of move up.
-export (String) var default_control_up = "ui_up"
+export (String) var default_control_up = "game_up"
 
 #Default action key for a controlled movement of move down.
-export (String) var default_control_down = "ui_down"
+export (String) var default_control_down = "game_down"
 
 #Set whether input is being ignored. If input is ignored, pressing
 #any of the control keys has no effect. However, unlike disabling
 #the behavior, the object can continue to move.
-export (bool) var ignore_inputs = true
+export (bool) var ignore_inputs = false
 
 #Property to be set. Note that the property name must be type of
 #Vector2. Otherwise, this node will not work.

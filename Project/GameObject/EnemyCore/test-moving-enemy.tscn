@@ -11,16 +11,28 @@ extents = Vector2( 8, 8 )
 
 [node name="test-moving-enemy" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
-base_hp = 10.0
-base_atk = 8.0
+base_hp = 240.0
+base_atk = 30.0
+base_def = 5.0
+experience = 50
+credits_base = 40
+credits_drop_chance = 1.0
+credits_drop_count = 12
+debris_count = 8
+debris_damage = 12
+death_sound = 1
 
 [node name="EnemyTurret" parent="." index="0" instance=ExtResource( 3 )]
 enemy_obj = ExtResource( 5 )
 
 [node name="BulletBehavior" parent="." index="1"]
 active = true
-speed = 5.0
-acceleration = 5.0
+speed = 0.0
+gravity = 75.0
+max_fall_speed = 30.0
+
+[node name="LevelBulletBhv" parent="." index="2"]
+active = false
 
 [node name="Sprite" parent="." index="3"]
 texture = ExtResource( 2 )
@@ -28,9 +40,7 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" parent="Hitbox/Area2D" index="0"]
 shape = SubResource( 1 )
 
-[node name="DelayTimer" type="Timer" parent="." index="6"]
-one_shot = true
-
-[node name="ShootTimer" type="Timer" parent="." index="7"]
-[connection signal="timeout" from="DelayTimer" to="." method="_on_DelayTimer_timeout"]
+[node name="ShootTimer" type="Timer" parent="." index="6"]
+wait_time = 1.4
+autostart = true
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

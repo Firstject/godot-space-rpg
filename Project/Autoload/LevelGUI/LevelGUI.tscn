@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Autoload/LevelGUI/LevelGUI.gd" type="Script" id=1]
 [ext_resource path="res://Lib/Instanceable/ShakeBehavior/ShakeBehavior.tscn" type="PackedScene" id=2]
@@ -9,13 +9,156 @@
 [ext_resource path="res://Assets/Image/GUI/ProgressBar/ProgressCircleBg.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Image/GUI/ProgressBar/ProgressCircleTop.png" type="Texture" id=8]
 [ext_resource path="res://Lib/Instanceable/BrightnessShader/BrightnessShader.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Assets/Fonts/8bitfont.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Assets/Fonts/SkyFly8Bit.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Assets/Image/GUI/ShieldIcon8x8.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Fonts/SkyFly8BitOutline.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Assets/Image/Enemy/EnemyBullet.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=14]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="InputEventAction" id=2]
+action = "game_a"
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Ready"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 0.5, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.15, 0.25, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 0.5, 0.5 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("FlashingButtonAnim:current_animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "Flashing" ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Used"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("FlashingButtonAnim:current_animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "Stop" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ColorRect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Flashing"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BgColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Stop"
+tracks/0/type = "value"
+tracks/0/path = NodePath("BgColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=8]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:rect_scale")
@@ -24,10 +167,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 1 ),
 "transitions": PoolRealArray( 0.5, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 0.5, 0.5 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 3, 3 ), Vector2( 0.5, 0.5 ), Vector2( 1, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BrightnessShader:brightness")
@@ -54,7 +197,7 @@ tracks/2/keys = {
 "values": [ Color( 0, 0.392157, 1, 1 ), Color( 0, 0.392157, 1, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=9]
 length = 0.3
 loop = true
 step = 0.05
@@ -71,7 +214,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("HpText:modulate")
 tracks/0/interp = 1
@@ -85,7 +228,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=11]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -101,7 +244,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0.25098, 0.376471, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=12]
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextHbox:modulate")
 tracks/0/interp = 1
@@ -115,7 +258,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=13]
 length = 0.3
 loop = true
 step = 0.01
@@ -132,7 +275,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=14]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -146,7 +289,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=15]
 length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextHBox:custom_constants/separation")
@@ -209,10 +352,217 @@ tracks/4/keys = {
 "values": [ "Flash", "Stop" ]
 }
 
-[sub_resource type="Curve" id=10]
+[sub_resource type="Animation" id=16]
+resource_name = "New Anim"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.486275, 0.486275, 0.486275, 1 ) ]
+}
+
+[sub_resource type="GDScript" id=17]
+script/source = "extends Button
+
+func _pressed() -> void:
+	OS.shell_open(\"https://trello.com/b/3H2v6Aup/galax-hero-superpower\")
+"
+
+[sub_resource type="GDScript" id=18]
+script/source = "extends Button
+
+func _pressed() -> void:
+	OS.shell_open(\"https://github.com/Firstject/godot-space-rpg\")
+"
+
+[sub_resource type="Animation" id=19]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.384314 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LevelClear/Label:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -48 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LevelClear:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LevelClear:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("LevelFail:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("LevelClear/Label2/AnimationPlayer:current_animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "New Anim" ]
+}
+
+[sub_resource type="Animation" id=20]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.384314 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LevelFail/Label:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -48 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LevelFail:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LevelFail:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("LevelClear:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=21]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Curve" id=22]
 _data = [ Vector2( 0, 1 ), 0.0, -2.5, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=23]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
@@ -267,7 +617,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=24]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("MarginContainer:custom_constants/margin_right")
@@ -330,7 +680,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=25]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("MarginContainer:custom_constants/margin_right")
@@ -393,7 +743,15 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="GDScript" id=26]
+script/source = "extends Label
+
+func _process(delta: float) -> void:
+	self.set_text(str(Engine.get_frames_per_second(), \" fps\"))
+"
+
 [node name="LevelGUI" type="CanvasLayer"]
+pause_mode = 2
 layer = 2
 script = ExtResource( 1 )
 
@@ -454,6 +812,114 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Utilities" type="VBoxContainer" parent="MarginContainer/Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -60.0
+margin_right = 28.0
+grow_vertical = 0
+custom_constants/separation = 12
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SuperpowerButton" type="Button" parent="MarginContainer/Control/Utilities"]
+margin_right = 28.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 28, 28 )
+rect_pivot_offset = Vector2( 14, 14 )
+focus_mode = 0
+size_flags_horizontal = 0
+disabled = true
+shortcut_in_tooltip = false
+action_mode = 0
+enabled_focus_mode = 0
+shortcut = SubResource( 3 )
+icon = ExtResource( 13 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Control/Utilities/SuperpowerButton"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 1, 0.635294, 0.270588, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BgColorRect" type="ColorRect" parent="MarginContainer/Control/Utilities/SuperpowerButton"]
+visible = false
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = -1.0
+margin_bottom = -1.0
+mouse_filter = 2
+color = Color( 1, 0.635294, 0.270588, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonAnim" type="AnimationPlayer" parent="MarginContainer/Control/Utilities/SuperpowerButton"]
+anims/Ready = SubResource( 4 )
+anims/Used = SubResource( 5 )
+
+[node name="FlashingButtonAnim" type="AnimationPlayer" parent="MarginContainer/Control/Utilities/SuperpowerButton"]
+anims/Flashing = SubResource( 6 )
+anims/Stop = SubResource( 7 )
+
+[node name="Label" type="Label" parent="MarginContainer/Control/Utilities/SuperpowerButton"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -10.0
+margin_top = -11.0
+margin_right = -2.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "K"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QItemButton" type="Button" parent="MarginContainer/Control/Utilities"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 40.0
+margin_right = 28.0
+margin_bottom = 68.0
+focus_mode = 0
+size_flags_horizontal = 0
+enabled_focus_mode = 0
+icon = ExtResource( 4 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="Button" parent="MarginContainer/Control/Utilities"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 80.0
+margin_right = 28.0
+margin_bottom = 108.0
+focus_mode = 0
+size_flags_horizontal = 0
+enabled_focus_mode = 0
+icon = ExtResource( 4 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PlayerHpBar" type="Control" parent="MarginContainer/Control"]
 margin_right = 112.0
 margin_bottom = 72.0
@@ -503,7 +969,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 16, 16 )
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "300"
 align = 1
@@ -513,12 +979,13 @@ __meta__ = {
 }
 
 [node name="LevelUpAnim" type="AnimationPlayer" parent="MarginContainer/Control/PlayerHpBar/VBox/LvHpSuper/LevelBar"]
-anims/LevelUp = SubResource( 2 )
+anims/LevelUp = SubResource( 8 )
 
 [node name="HpSuperVBox" type="VBoxContainer" parent="MarginContainer/Control/PlayerHpBar/VBox/LvHpSuper"]
 margin_left = 40.0
 margin_right = 94.0
 margin_bottom = 32.0
+rect_min_size = Vector2( 54, 0 )
 mouse_filter = 2
 size_flags_horizontal = 3
 custom_constants/separation = 0
@@ -574,8 +1041,8 @@ value = 40.0
 percent_visible = false
 
 [node name="HpAnim" type="AnimationPlayer" parent="MarginContainer/Control/PlayerHpBar/VBox/LvHpSuper/HpSuperVBox"]
-anims/Low = SubResource( 3 )
-anims/Normal = SubResource( 4 )
+anims/Low = SubResource( 9 )
+anims/Normal = SubResource( 10 )
 
 [node name="Shield" type="HBoxContainer" parent="MarginContainer/Control/PlayerHpBar/VBox"]
 margin_top = 36.0
@@ -618,8 +1085,8 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "%"
 
 [node name="ShieldAnim" type="AnimationPlayer" parent="MarginContainer/Control/PlayerHpBar/VBox/Shield"]
-anims/Low = SubResource( 5 )
-anims/Normal = SubResource( 6 )
+anims/Low = SubResource( 11 )
+anims/Normal = SubResource( 12 )
 
 [node name="LevelText" type="Control" parent="."]
 visible = false
@@ -641,6 +1108,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LevelLabel" type="Label" parent="LevelText/Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -88.0
+margin_top = 16.0
+margin_right = -8.0
+margin_bottom = 27.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Enemy lv: 3"
+align = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="LevelText/Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -96.0
+margin_top = 32.0
+margin_right = -7.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 1, 0.584314, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Exp boost: +50%"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextHBox" type="HBoxContainer" parent="LevelText"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -653,9 +1150,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="LevelText/TextHBox"]
-margin_left = 697.0
+margin_left = 88.0
 margin_top = 2.0
-margin_right = 703.0
+margin_right = 94.0
 margin_bottom = 13.0
 text = "N"
 align = 1
@@ -665,9 +1162,9 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="LevelText/TextHBox"]
-margin_left = 703.0
+margin_left = 94.0
 margin_top = 2.0
-margin_right = 708.0
+margin_right = 99.0
 margin_bottom = 13.0
 text = "o"
 align = 1
@@ -677,9 +1174,9 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="LevelText/TextHBox"]
-margin_left = 708.0
+margin_left = 99.0
 margin_top = 2.0
-margin_right = 713.0
+margin_right = 104.0
 margin_bottom = 13.0
 text = "r"
 align = 1
@@ -689,9 +1186,9 @@ __meta__ = {
 }
 
 [node name="Label4" type="Label" parent="LevelText/TextHBox"]
-margin_left = 713.0
+margin_left = 104.0
 margin_top = 2.0
-margin_right = 717.0
+margin_right = 108.0
 margin_bottom = 13.0
 text = "t"
 align = 1
@@ -701,9 +1198,9 @@ __meta__ = {
 }
 
 [node name="Label5" type="Label" parent="LevelText/TextHBox"]
-margin_left = 717.0
+margin_left = 108.0
 margin_top = 2.0
-margin_right = 722.0
+margin_right = 113.0
 margin_bottom = 13.0
 text = "h"
 align = 1
@@ -713,9 +1210,9 @@ __meta__ = {
 }
 
 [node name="Label6" type="Label" parent="LevelText/TextHBox"]
-margin_left = 722.0
+margin_left = 113.0
 margin_top = 2.0
-margin_right = 725.0
+margin_right = 116.0
 margin_bottom = 13.0
 text = " "
 align = 1
@@ -725,9 +1222,9 @@ __meta__ = {
 }
 
 [node name="Label7" type="Label" parent="LevelText/TextHBox"]
-margin_left = 725.0
+margin_left = 116.0
 margin_top = 2.0
-margin_right = 730.0
+margin_right = 121.0
 margin_bottom = 13.0
 text = "S"
 align = 1
@@ -737,9 +1234,9 @@ __meta__ = {
 }
 
 [node name="Label8" type="Label" parent="LevelText/TextHBox"]
-margin_left = 730.0
+margin_left = 121.0
 margin_top = 2.0
-margin_right = 734.0
+margin_right = 125.0
 margin_bottom = 13.0
 text = "t"
 align = 1
@@ -749,9 +1246,9 @@ __meta__ = {
 }
 
 [node name="Label9" type="Label" parent="LevelText/TextHBox"]
-margin_left = 734.0
+margin_left = 125.0
 margin_top = 2.0
-margin_right = 740.0
+margin_right = 131.0
 margin_bottom = 13.0
 text = "a"
 align = 1
@@ -761,9 +1258,9 @@ __meta__ = {
 }
 
 [node name="Label10" type="Label" parent="LevelText/TextHBox"]
-margin_left = 740.0
+margin_left = 131.0
 margin_top = 2.0
-margin_right = 745.0
+margin_right = 136.0
 margin_bottom = 13.0
 text = "r"
 align = 1
@@ -783,6 +1280,7 @@ margin_right = 40.0
 margin_bottom = 59.0
 grow_horizontal = 2
 custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Ready!"
 align = 1
 uppercase = true
@@ -791,11 +1289,213 @@ __meta__ = {
 }
 
 [node name="TextFlashAnim" type="AnimationPlayer" parent="LevelText/ReadyLabel"]
-anims/Flash = SubResource( 7 )
-anims/Stop = SubResource( 8 )
+anims/Flash = SubResource( 13 )
+anims/Stop = SubResource( 14 )
 
 [node name="LevelTextAnim" type="AnimationPlayer" parent="LevelText"]
-anims/FlyinOut = SubResource( 9 )
+anims/FlyinOut = SubResource( 15 )
+
+[node name="LevelEnd" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="LevelEnd"]
+modulate = Color( 1, 1, 1, 0.384314 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelClear" type="Control" parent="LevelEnd"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = -8.0
+margin_right = 112.0
+margin_bottom = 8.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="LevelEnd/LevelClear"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -48.0
+margin_bottom = -48.0
+custom_fonts/font = ExtResource( 12 )
+text = "Stage Clear!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="LevelEnd/LevelClear"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = 24.0
+margin_right = 112.0
+margin_bottom = 138.0
+custom_fonts/font = ExtResource( 14 )
+text = "Thank you for playing the Galax Hero demo!
+
+The full game, featuring more levels, ships,
+weapons, equipments, and more, will be out soon!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelEnd/LevelClear/Label2"]
+"anims/New Anim" = SubResource( 16 )
+
+[node name="Label3" type="Label" parent="LevelEnd/LevelClear"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = 96.0
+margin_right = 112.0
+margin_bottom = 163.0
+custom_fonts/font = ExtResource( 14 )
+text = "Follow us on Trello:
+
+
+
+Source code:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="LevelEnd/LevelClear"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.0
+margin_top = 110.0
+margin_right = 58.0
+margin_bottom = 137.0
+theme = ExtResource( 3 )
+text = "Visit project progress"
+script = SubResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="LevelEnd/LevelClear"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -61.0
+margin_top = 166.0
+margin_right = 61.0
+margin_bottom = 193.0
+theme = ExtResource( 3 )
+text = "Github : Godot Space RPG"
+script = SubResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelFail" type="Control" parent="LevelEnd"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = -8.0
+margin_right = 112.0
+margin_bottom = 8.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="LevelEnd/LevelFail"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 12 )
+text = "Game Over!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="LevelEnd/LevelFail"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = 32.0
+margin_right = 112.0
+margin_bottom = 99.0
+custom_fonts/font = ExtResource( 14 )
+text = "Better luck next time!
+
+Beat this level to see spoilers"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestartButton" type="Button" parent="LevelEnd/LevelFail"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -48.0
+margin_top = 96.0
+margin_right = 49.0
+margin_bottom = 123.0
+theme = ExtResource( 3 )
+text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="LevelEnd/LevelFail"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = 128.0
+margin_right = 112.0
+margin_bottom = 139.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 1, 0.682353, 0.0784314, 1 )
+text = "Saving is disabled in demo version"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="LevelEnd"]
+autoplay = "Init"
+anims/Clear = SubResource( 19 )
+anims/Fail = SubResource( 20 )
+anims/Init = SubResource( 21 )
 
 [node name="Damage" type="Control" parent="."]
 visible = false
@@ -814,7 +1514,7 @@ shake_duration = 0.3
 shake_magnitude = 8.0
 shake_frequency = 60.0
 infinite_duration = false
-shake_curve = SubResource( 10 )
+shake_curve = SubResource( 22 )
 shake_offset = Vector2( 0, 0 )
 vector_property_to_set = "rect_position"
 
@@ -855,8 +1555,23 @@ __meta__ = {
 }
 
 [node name="DamageAnim" type="AnimationPlayer" parent="Damage"]
-anims/Damage = SubResource( 11 )
+anims/Damage = SubResource( 23 )
 
 [node name="ShowHideAnim" type="AnimationPlayer" parent="."]
-anims/Hide = SubResource( 12 )
-anims/Show = SubResource( 13 )
+anims/Hide = SubResource( 24 )
+anims/Show = SubResource( 25 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -40.0
+margin_bottom = 14.0
+grow_horizontal = 0
+custom_fonts/font = ExtResource( 14 )
+text = "60"
+align = 2
+script = SubResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="LevelEnd/LevelFail/RestartButton" to="." method="_on_RestartButton_pressed"]

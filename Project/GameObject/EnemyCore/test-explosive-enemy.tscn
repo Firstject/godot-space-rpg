@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GameObject/EnemyCore/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Image/Enemy/test-explosive-enemy.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 2, 1 ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 8 )
+
+[node name="test-explosive-enemy" instance=ExtResource( 1 )]
+base_hp = 30.0
+base_def = 20.0
+experience = 19
+credits_base = 5
+credits_drop_chance = 1.0
+credits_drop_count = 6
+debris_count = 16
+debris_damage = 125
+death_sound = 1
+
+[node name="BulletBehavior" parent="." index="0"]
+active = true
+speed = 10.0
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="1"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="Hitbox/Area2D" index="0"]
+shape = SubResource( 2 )

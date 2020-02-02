@@ -35,19 +35,15 @@ signal leveled_up()
 #      Properties
 #-------------------------------------------------
 
-export (PackedScene) var player_projectile
+export (bool) var can_fire = false setget set_can_fire
 
-#If set to false, virtual method of _fire() will not work.
-#Setting to true will allow the use of _fire() function.
-export (bool) var custom_spawn_code
 
-#Set disabled to false to make this weapon fires the bullet.
-export (bool) var disabled = true setget set_disabled
-
+onready var player_proj_turret := $PlayerProjectileTurret as PlayerProjectileTurret
 
 var experience : int = 0
 
 var current_lv : int = 1
+
 
 #-------------------------------------------------
 #      Notifications
@@ -55,7 +51,7 @@ var current_lv : int = 1
 
 func _ready() -> void:
 	update_shoot_timer_from_weapon_db()
-	update_shoot_timer_state()
+	$ShootTimer.start()
 	_connect_battleserver()
 
 #-------------------------------------------------
@@ -63,7 +59,7 @@ func _ready() -> void:
 #-------------------------------------------------
 
 func _fire():
-	pass
+	player_proj_turret.spawn_player_proj(self)
 
 #-------------------------------------------------
 #      Override Methods
@@ -80,29 +76,6 @@ func update_shoot_timer_from_weapon_db() -> void:
 	
 	$ShootTimer.set_wait_time(get_weapon_database().fire_rate)
 
-func update_shoot_timer_state():
-	if self.disabled:
-		$ShootTimer.stop()
-	else:
-		$ShootTimer.start()
-
-#Should be called from _fire() function.
-func spawn_projectile() -> PlayerProjectile:
-	if player_projectile == null:
-		push_warning(str(self, ": Can't spawn an empty projectile! Please set one."))
-		return null
-	
-	var proj = player_projectile.instance()
-	var sp_cy_node = get_tree().get_nodes_in_group("SpriteCycling")[0]
-	sp_cy_node.get_parent().add_child(proj)
-	_add_atk_to_projectile(proj)
-	proj.global_position = self.global_position
-	proj.set_level_from_entity(self)
-	proj.clear_bonus_stats()
-	proj.add_bonuses_from_entity(self)
-	
-	return proj
-
 func gain_exp():
 	if is_at_max_lv():
 		return
@@ -112,7 +85,7 @@ func gain_exp():
 		if experience >= get_weapon_database().experience_table[current_lv - 1]:
 			current_lv += 1
 			emit_signal("leveled_up")
-			AudioCenter.beam_level.play()
+			AudioCenter.sfx_combat_beam_level_up.play()
 
 func is_at_max_lv() -> bool:
 	if has_weapon_database():
@@ -139,10 +112,8 @@ func has_weapon_database() -> bool:
 #-------------------------------------------------
 
 func _on_ShootTimer_timeout() -> void:
-	if custom_spawn_code:
+	if can_fire:
 		_fire()
-	else:
-		spawn_projectile()
 
 func _on_BattleServer_enemy_killed(enemy) -> void:
 	gain_exp()
@@ -151,13 +122,6 @@ func _on_BattleServer_enemy_killed(enemy) -> void:
 #      Private Methods
 #-------------------------------------------------
 
-func _add_atk_to_projectile(proj : PlayerProjectile) -> void:
-	if proj is PlayerProjectile:
-		if not has_weapon_database():
-			push_warning(str(self, ": Weapon database is null. No atk bonus added."))
-		else:
-			proj.atk += get_weapon_database().atk_bonus
-
 func _connect_battleserver() -> void:
 	BattleServer.connect("enemy_killed", self, "_on_BattleServer_enemy_killed")
 
@@ -165,5 +129,5 @@ func _connect_battleserver() -> void:
 #      Setters & Getters
 #-------------------------------------------------
 
-func set_disabled(val : bool) -> void:
-	disabled = val
+func set_can_fire(val : bool) -> void:
+	can_fire = val

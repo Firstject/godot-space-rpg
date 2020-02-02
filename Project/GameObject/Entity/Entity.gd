@@ -50,6 +50,8 @@ var max_hp : float
 var base_hp_bonus : float
 var base_atk_bonus : float
 var base_def_bonus : float
+var crit_rate_bonus : float
+var crit_damage_rate_bonus : float
 
 var previous_attacker : Entity setget set_previous_attacker
 var previous_damage_taken : int setget set_previous_damage_taken
@@ -99,15 +101,15 @@ func can_be_damaged_by(attacker_entity : Entity) -> bool:
 
 func calculate_take_damage_from_entity(attacker_entity : Entity) -> int:
 	var total_damage : float
-	var is_critical = rand_range(0, 1) < attacker_entity.crit_rate
+	var is_critical = rand_range(0, 1) < attacker_entity.crit_rate + attacker_entity.crit_rate_bonus
 	
 	total_damage += attacker_entity.atk
 	total_damage *= rand_range(0.9, 1.1)
 	total_damage -= self.def * 0.25
 	total_damage = int(total_damage)
-	total_damage = clamp(total_damage, 0, 99999)
 	if is_critical:
-		total_damage *= crit_damage_rate
+		total_damage *= attacker_entity.crit_damage_rate + attacker_entity.crit_damage_rate_bonus
+	total_damage = clamp(total_damage, 0, 99999)
 	
 	set_previous_attacker(attacker_entity)
 	set_previous_damage_taken(total_damage)
@@ -128,6 +130,8 @@ func clear_bonus_stats() -> void:
 	base_hp_bonus = 0
 	base_atk_bonus = 0
 	base_def_bonus = 0
+	crit_rate_bonus = 0
+	crit_damage_rate_bonus = 0
 	
 	update_stats()
 
@@ -135,6 +139,8 @@ func add_bonuses_from_entity(entity_source : Entity):
 	base_hp_bonus += entity_source.base_hp + entity_source.base_hp_bonus
 	base_atk_bonus += entity_source.base_atk + entity_source.base_atk_bonus
 	base_def_bonus += entity_source.base_def + entity_source.base_def_bonus
+	crit_rate_bonus += entity_source.crit_rate + entity_source.crit_rate_bonus
+	crit_damage_rate_bonus += entity_source.crit_damage_rate + entity_source.crit_damage_rate_bonus
 	
 	update_stats()
 

@@ -6,3 +6,8 @@
 "PlayerEquipment",
 ]]
 script = ExtResource( 1 )
+base_hp = 0.0
+base_atk = 0.0
+base_def = 0.0
+crit_rate = 0.0
+crit_damage_rate = 0.0

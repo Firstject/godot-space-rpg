@@ -127,6 +127,8 @@ var current_distance_traveled : float = 0
 var vec_angle : Vector2
 var velocity : Vector2
 
+var _is_signal_distance_travelled_reached_emitted : bool = false
+var _is_signal_stopped_moving_emitted : bool = false
 
 
 #-------------------------------------------------
@@ -224,21 +226,18 @@ func _do_process(delta: float) -> void:
 
 #Check all emit-able signals. If there's one that can be emitted,
 #start one.
-var _is_signal_distance_travelled_reached_emitted : bool = false
-var _is_signal_stopped_moving_emitted : bool = false
 func _check_and_emit_signals():
 	if (current_distance_traveled >= signal_on_distance_travelled and !_is_signal_distance_travelled_reached_emitted):
 		emit_signal("distance_travelled_reached")
 		_is_signal_distance_travelled_reached_emitted = true
-	else:
-		_is_signal_distance_travelled_reached_emitted = false
 	
-	if (velocity == Vector2(0, 0) and !_is_signal_stopped_moving_emitted):
+	
+	if velocity == Vector2.ZERO and not _is_signal_stopped_moving_emitted:
 		emit_signal("stopped_moving")
 		_is_signal_stopped_moving_emitted = true
-	else:
+	if velocity != Vector2.ZERO and _is_signal_stopped_moving_emitted:
 		_is_signal_stopped_moving_emitted = false
-
+	
 
 
 #-------------------------------------------------

@@ -2,8 +2,8 @@ extends PlayerProjectile
 
 class_name PlayerProjectileDebris
 
-const PROJECTILE_SPEED_MIN = 60
-const PROJECTILE_SPEED_MAX = 150
+const PROJECTILE_SPEED_MIN = 90
+const PROJECTILE_SPEED_MAX = 250
 const DURATION_MIN : float = 0.5
 const DURATION_MAX : float = 1.1
 

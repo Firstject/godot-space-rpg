@@ -56,6 +56,10 @@ func _ready() -> void:
 	
 	_spawn_player_ship()
 	_play_bgm()
+	
+	BattleServer.reset_all_counters()
+	
+	LevelGUI.get_node("LevelText/Panel/LevelLabel").text = str("Enemy lv: ", enemy_lv)
 
 #-------------------------------------------------
 #      Virtual Methods

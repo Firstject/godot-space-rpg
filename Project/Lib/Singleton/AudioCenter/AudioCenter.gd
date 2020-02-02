@@ -38,16 +38,23 @@ onready var bgm_core : AudioStreamPlayer = $BGM/BgmCore_DONT_TOUCH_THIS
 onready var bgm_property_setter_player : AnimationPlayer = $BGM/BgmCore_DONT_TOUCH_THIS/PropertySetterPlayer
 
 #Sfx (Sound Effects)
-onready var beam_level : AudioStreamPlayer = $SFX/Combat/BeamLevel
-onready var debris_kill : AudioStreamPlayer = $SFX/Combat/DebrisKill
-onready var enemy_dead_small : AudioStreamPlayer = $SFX/Combat/EnemyDeadSmall
-onready var enemy_shoot_slow : AudioStreamPlayer = $SFX/Combat/EnemyShootSlow
-onready var level_up : AudioStreamPlayer = $SFX/Combat/LevelUp
-onready var player_hit : AudioStreamPlayer = $SFX/Combat/PlayerHit
-onready var pshot_normal : AudioStreamPlayer = $SFX/Combat/PShotNormal
-onready var shield_block : AudioStreamPlayer = $SFX/Combat/ShieldBlock
-
 onready var sfx_ui_button1 : AudioStreamPlayer = $SFX/UI/Button1
+
+onready var sfx_combat_beam_level_up : AudioStreamPlayer = $SFX/Combat/BeamLevelUp
+onready var sfx_combat_credits : AudioStreamPlayer = $SFX/Combat/Credits
+onready var sfx_combat_debris_kill : AudioStreamPlayer = $SFX/Combat/DebrisKill
+onready var sfx_combat_enemy_dead1 : AudioStreamPlayer = $SFX/Combat/EnemyDead1
+onready var sfx_combat_enemy_dead2 : AudioStreamPlayer = $SFX/Combat/EnemyDead2
+onready var sfx_combat_enemy_hit : AudioStreamPlayer = $SFX/Combat/EnemyHit
+onready var sfx_combat_enemy_shot1 : AudioStreamPlayer = $SFX/Combat/EnemyShot1
+onready var sfx_combat_enemy_shot2 : AudioStreamPlayer = $SFX/Combat/EnemyShot2
+onready var sfx_combat_level_up : AudioStreamPlayer = $SFX/Combat/LevelUp
+onready var sfx_combat_player_damage : AudioStreamPlayer = $SFX/Combat/PlayerDamage
+onready var sfx_combat_player_kill : AudioStreamPlayer = $SFX/Combat/PlayerKill
+onready var sfx_combat_pulse_beam : AudioStreamPlayer = $SFX/Combat/PulseBeam
+onready var sfx_combat_ring_spread : AudioStreamPlayer = $SFX/Combat/RingSpread
+onready var sfx_combat_shield_block : AudioStreamPlayer = $SFX/Combat/ShieldBlock
+onready var sfx_combat_super_ready : AudioStreamPlayer = $SFX/Combat/SuperReady
 
 #TEMP
 var current_bgm : String #Path

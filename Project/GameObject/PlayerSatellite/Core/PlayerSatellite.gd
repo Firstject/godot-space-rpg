@@ -27,11 +27,10 @@ enum Slot {LEFT, RIGHT}
 #      Properties
 #-------------------------------------------------
 
-export (bool) var can_fire = false
-
-export (PackedScene) var projectile
+export (bool) var can_fire = false setget set_can_fire
 
 
+onready var player_proj_turret := $PlayerProjectileTurret as PlayerProjectileTurret
 onready var shoot_timer = $ShootTimer
 
 
@@ -49,6 +48,9 @@ func _ready():
 #-------------------------------------------------
 #      Virtual Methods
 #-------------------------------------------------
+
+func _shoot() -> void:
+	player_proj_turret.spawn_player_proj(self)
 
 #-------------------------------------------------
 #      Override Methods
@@ -91,7 +93,8 @@ func get_satellite_database() -> ResItemEquipSatellite:
 #-------------------------------------------------
 
 func _on_ShootTimer_timeout():
-	_shoot()
+	if can_fire:
+		_shoot()
 
 func _on_BattleServer_enemy_killed(enemy_obj):
 	gain_exp()
@@ -113,25 +116,9 @@ func _test_start_shoot_timer():
 func _connect_battleserver() -> void:
 	BattleServer.connect("enemy_killed", self, "_on_BattleServer_enemy_killed")
 
-#Automatically called when ShootTimer timeout.
-func _shoot():
-	if not can_fire:
-		return
-	
-	var _pj = projectile.instance()
-	
-	_pj = _pj as Entity
-	_pj.lv = lv
-	
-	var sp_cy_node = get_tree().get_nodes_in_group("SpriteCycling")[0]
-	sp_cy_node.get_parent().add_child(_pj)
-	_pj.global_position = global_position
-	_pj.set_level_from_entity(self)
-	_pj.clear_bonus_stats()
-	_pj.add_bonuses_from_entity(self)
-	
-
 #-------------------------------------------------
 #      Setters & Getters
 #-------------------------------------------------
 
+func set_can_fire(val : bool) -> void:
+	can_fire = val

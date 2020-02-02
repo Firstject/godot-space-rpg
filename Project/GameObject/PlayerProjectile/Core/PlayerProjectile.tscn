@@ -6,7 +6,11 @@
 
 [node name="PlayerProjectileCore" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+base_hp = 1.0
 base_atk = 0.0
+base_def = 0.0
+crit_rate = 0.0
+crit_damage_rate = 0.0
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="0"]
 visible = false

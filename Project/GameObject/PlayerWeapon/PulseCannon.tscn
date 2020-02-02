@@ -8,6 +8,7 @@
 [node name="PulseCannon" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
 equip_database = ExtResource( 2 )
-player_projectile = ExtResource( 3 )
-custom_spawn_code = true
 disabled = false
+
+[node name="PlayerProjectileTurret" parent="." index="0"]
+player_projectile_obj = ExtResource( 3 )

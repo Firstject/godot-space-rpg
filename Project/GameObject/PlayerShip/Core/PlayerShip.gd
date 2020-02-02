@@ -21,6 +21,8 @@ class_name PlayerShip
 #      Constants
 #-------------------------------------------------
 
+const LEVEL_END_ACCEL_SPD : float = 360.0
+
 const TEMP_CUSTOM_WEAPON = preload("res://GameObject/PlayerWeapon/PulseCannon.tscn")
 const TEMP_CUSTOM_SHIELD = preload("res://GameObject/PlayerShield/test-shield.tscn")
 const TEMP_CUSTOM_SATELLITE = preload("res://GameObject/PlayerSatellite/test-satellite.tscn")
@@ -35,6 +37,7 @@ export (bool) var can_control = false setget set_can_control
 
 
 onready var pose_blt_bhv = $PoseBltBhv
+onready var ctrl_8dir_bhv = $Controls/EightDirectionBehavior
 onready var player_ship_touch_ctrler = $Controls/PlayerShipTouchController
 onready var exp_system := $ExperienceSystem as ExperienceSystem
 onready var damage_area2d = $Hitbox/DamageArea2D
@@ -42,7 +45,6 @@ onready var damage_anim = $DamageAnim
 onready var damage_popup_turret = $DamagePopupTurret
 onready var shield_damage_popup_turret = $ShieldDamagePopupTurret
 onready var invincible_state := $InvincibleState as InvincibleState
-onready var ctrl_8dir_bhv = $Controls/EightDirectionBehavior
 
 #-------------------------------------------------
 #      Notifications
@@ -56,9 +58,20 @@ func _ready() -> void:
 	_install_player_modules()
 	_update_controllables()
 	recalculate_bonuses()
+	_connect_levelserver()
 	_connect_battleserver()
 	exp_system.set_current_level(lv)
 	_update_gui()
+
+func _process(delta: float) -> void:
+	if global_position.x < 8:
+		global_position.x = 8
+	if global_position.x > 216:
+		global_position.x = 216
+	if global_position.y < 8:
+		global_position.y = 8
+	if global_position.y > 392:
+		global_position.y = 392
 
 #-------------------------------------------------
 #      Virtual Methods
@@ -91,6 +104,10 @@ func take_damage_from_enemy(enemy : Entity):
 	var total_dmg = calculate_take_damage_from_entity(enemy)
 	var is_colliding_enemy = enemy.is_collider
 	
+	#If collided with a collider, then the damage is doubled.
+	if is_colliding_enemy:
+		total_dmg *= 2
+	
 	#If the player has a shield equipped and not in collision with
 	#the enemy that is a collider, make the shield absorb
 	#the damage.
@@ -110,11 +127,11 @@ func take_damage_from_enemy(enemy : Entity):
 			shield_damage_popup_turret.spawn_damage_popup(get_shield().previous_absorbed_damage, DamagePopup.DamageType.NO_DAMAGE)
 		else:
 			damage_popup_turret.spawn_damage_popup(0, DamagePopup.DamageType.NO_DAMAGE)
-		AudioCenter.shield_block.play()
+		AudioCenter.sfx_combat_shield_block.play()
 	else: #Ship takes damage
 		if has_shield() and get_shield().previous_absorbed_damage > 0:
 			shield_damage_popup_turret.spawn_damage_popup(get_shield().previous_absorbed_damage, DamagePopup.DamageType.NO_DAMAGE)
-			AudioCenter.shield_block.play()
+			AudioCenter.sfx_combat_shield_block.play()
 		
 		if not previous_is_crit_taken:
 			damage_popup_turret.spawn_damage_popup(total_dmg, DamagePopup.DamageType.PLAYER)
@@ -124,7 +141,7 @@ func take_damage_from_enemy(enemy : Entity):
 		#Make UI shake and show damage overlay
 		LevelGUI.play_dmg_anim()
 		
-		AudioCenter.player_hit.play()
+		AudioCenter.sfx_combat_player_damage.play()
 	
 	#Become invincible for a short while.
 	#Will not trigger this if collided with enemy projectile.
@@ -139,8 +156,19 @@ func take_damage_from_enemy(enemy : Entity):
 	# under construction ...
 
 func invincible():
-	invincible_state.start_invincibility()
-	damage_anim.play("DamageLoop")
+	#Check for death
+	if is_dead():
+		AudioCenter.stop_bgm()
+		AudioCenter.sfx_combat_player_kill.play()
+		set_can_control(false)
+		$Hitbox/DamageArea2D.set_monitoring(false)
+		$Hitbox/DamageArea2D.set_deferred("monitorable", false)
+		$PickupsCollector.queue_free()
+		damage_anim.play("Death")
+		BattleServer.emit_signal("player_dead", self)
+	else:
+		invincible_state.start_invincibility()
+		damage_anim.play("DamageLoop")
 
 func has_weapon() -> bool:
 	for i in $ShipComponents/Weapon.get_children():
@@ -216,6 +244,7 @@ func _on_shield_updated():
 func _on_superpower_updated():
 	_update_gui()
 
+#This one is calling all the time
 func _on_PoseBltBhv_stopped_moving():
 	set_can_control(true)
 
@@ -225,11 +254,23 @@ func _on_ExperienceSystem_level_up() -> void:
 	recalculate_bonuses()
 	_update_gui()
 	LevelGUI.play_level_up_anim()
+	
+	AudioCenter.sfx_combat_level_up.play()
 
 func _on_BattleServer_enemy_killed(enemy_obj) -> void:
 	#enemy_obj is not directly casted to avoid cyclic recursion
 	exp_system.gain_exp(enemy_obj.exp_system.get_exp_drop())
 	_update_gui()
+
+func _on_LevelServer_level_completed() -> void:
+	set_can_control(false)
+	pose_blt_bhv.current_acceleration = 0
+	pose_blt_bhv.speed = 0
+	pose_blt_bhv.velocity = Vector2.ZERO
+	pose_blt_bhv.acceleration = LEVEL_END_ACCEL_SPD
+	pose_blt_bhv.active = true
+	damage_area2d.set_monitoring(false)
+	damage_area2d.set_monitorable(false)
 
 #-------------------------------------------------
 #      Private Methods
@@ -237,30 +278,48 @@ func _on_BattleServer_enemy_killed(enemy_obj) -> void:
 
 func _add_bonus_stats_from_equipments() -> void:
 	if has_weapon():
-		base_hp_bonus += get_weapon().get_equip_database().hp_bonus
-		base_atk_bonus += get_weapon().get_equip_database().atk_bonus
-		base_def_bonus += get_weapon().get_equip_database().def_bonus
+		if get_weapon().has_equip_database():
+			base_hp_bonus += get_weapon().get_equip_database().hp_bonus
+			base_atk_bonus += get_weapon().get_equip_database().atk_bonus
+			base_def_bonus += get_weapon().get_equip_database().def_bonus
+			crit_rate_bonus += get_weapon().get_equip_database().crit_rate_bonus
+			crit_damage_rate_bonus += get_weapon().get_equip_database().crit_damage_rate_bonus
 	if has_shield():
-		base_hp_bonus += get_shield().get_equip_database().hp_bonus
-		base_atk_bonus += get_shield().get_equip_database().atk_bonus
-		base_def_bonus += get_shield().get_equip_database().def_bonus
+		if get_shield().has_equip_database():
+			base_hp_bonus += get_shield().get_equip_database().hp_bonus
+			base_atk_bonus += get_shield().get_equip_database().atk_bonus
+			base_def_bonus += get_shield().get_equip_database().def_bonus
+			crit_rate_bonus += get_shield().get_equip_database().crit_rate_bonus
+			crit_damage_rate_bonus += get_shield().get_equip_database().crit_damage_rate_bonus
 	if has_superpower():
-		base_hp_bonus += get_superpower().get_equip_database().hp_bonus
-		base_atk_bonus += get_superpower().get_equip_database().atk_bonus
-		base_def_bonus += get_superpower().get_equip_database().def_bonus
+		if get_superpower().has_equip_database():
+			base_hp_bonus += get_superpower().get_equip_database().hp_bonus
+			base_atk_bonus += get_superpower().get_equip_database().atk_bonus
+			base_def_bonus += get_superpower().get_equip_database().def_bonus
+			crit_rate_bonus += get_superpower().get_equip_database().crit_rate_bonus
+			crit_damage_rate_bonus += get_superpower().get_equip_database().crit_damage_rate_bonus
 	if has_satellite(PlayerSatelliteCore.Slot.LEFT):
-		base_hp_bonus += get_satellite(PlayerSatelliteCore.Slot.LEFT).get_equip_database().hp_bonus
-		base_atk_bonus += get_satellite(PlayerSatelliteCore.Slot.LEFT).get_equip_database().atk_bonus
-		base_def_bonus += get_satellite(PlayerSatelliteCore.Slot.LEFT).get_equip_database().def_bonus
+		if get_satellite(PlayerSatelliteCore.Slot.LEFT).has_equip_database():
+			base_hp_bonus += get_satellite(PlayerSatelliteCore.Slot.LEFT).get_equip_database().hp_bonus
+			base_atk_bonus += get_satellite(PlayerSatelliteCore.Slot.LEFT).get_equip_database().atk_bonus
+			base_def_bonus += get_satellite(PlayerSatelliteCore.Slot.LEFT).get_equip_database().def_bonus
+			crit_rate_bonus += get_satellite(PlayerSatelliteCore.Slot.LEFT).get_equip_database().crit_rate_bonus
+			crit_damage_rate_bonus += get_satellite(PlayerSatelliteCore.Slot.LEFT).get_equip_database().crit_damage_rate_bonus
 	if has_satellite(PlayerSatelliteCore.Slot.RIGHT):
-		base_hp_bonus += get_satellite(PlayerSatelliteCore.Slot.RIGHT).get_equip_database().hp_bonus
-		base_atk_bonus += get_satellite(PlayerSatelliteCore.Slot.RIGHT).get_equip_database().atk_bonus
-		base_def_bonus += get_satellite(PlayerSatelliteCore.Slot.RIGHT).get_equip_database().def_bonus
+		if get_satellite(PlayerSatelliteCore.Slot.RIGHT).has_equip_database():
+			base_hp_bonus += get_satellite(PlayerSatelliteCore.Slot.RIGHT).get_equip_database().hp_bonus
+			base_atk_bonus += get_satellite(PlayerSatelliteCore.Slot.RIGHT).get_equip_database().atk_bonus
+			base_def_bonus += get_satellite(PlayerSatelliteCore.Slot.RIGHT).get_equip_database().def_bonus
+			crit_rate_bonus += get_satellite(PlayerSatelliteCore.Slot.RIGHT).get_equip_database().crit_rate_bonus
+			crit_damage_rate_bonus += get_satellite(PlayerSatelliteCore.Slot.RIGHT).get_equip_database().crit_damage_rate_bonus
 	for i in get_modules():
 		if i is PlayerModule:
-			base_hp_bonus += i.get_equip_database().hp_bonus
-			base_atk_bonus += i.get_equip_database().atk_bonus
-			base_def_bonus += i.get_equip_database().def_bonus
+			if i.has_equip_database():
+				base_hp_bonus += i.get_equip_database().hp_bonus
+				base_atk_bonus += i.get_equip_database().atk_bonus
+				base_def_bonus += i.get_equip_database().def_bonus
+				crit_rate_bonus += i.get_equip_database().crit_rate_bonus
+				crit_damage_rate_bonus += i.get_equip_database().crit_damage_rate_bonus
 
 func _install_player_weapon():
 	push_warning("Installing TEMP_CUSTOM_WEAPON as an unintended feature.")
@@ -323,6 +382,10 @@ func _update_modules_stat():
 		get_satellite(PlayerSatelliteCore.Slot.RIGHT).clear_bonus_stats()
 		get_satellite(PlayerSatelliteCore.Slot.RIGHT).add_bonuses_from_entity(self)
 		get_satellite(PlayerSatelliteCore.Slot.RIGHT).multiply_dmg_by_str()
+	if has_superpower():
+		get_superpower().set_level_from_entity(self)
+		get_superpower().clear_bonus_stats()
+		get_superpower().add_bonuses_from_entity(self)
 
 func _update_gui() -> void:
 	LevelGUI.update_player_status(self)
@@ -330,9 +393,22 @@ func _update_gui() -> void:
 func _update_controllables() -> void:
 	ctrl_8dir_bhv.active = can_control
 	player_ship_touch_ctrler.active = can_control
+	
+	#Change the shooting state of weapon, satellite, and superpower.
+	if has_weapon():
+		get_weapon().set_can_fire(can_control)
+	if has_satellite(PlayerSatelliteCore.Slot.LEFT):
+		get_satellite(PlayerSatelliteCore.Slot.LEFT).set_can_fire(can_control)
+	if has_satellite(PlayerSatelliteCore.Slot.RIGHT):
+		get_satellite(PlayerSatelliteCore.Slot.RIGHT).set_can_fire(can_control)
+	if has_superpower():
+		get_superpower().set_can_fire(can_control)
 
 func _connect_battleserver():
 	BattleServer.connect("enemy_killed", self, "_on_BattleServer_enemy_killed")
+
+func _connect_levelserver():
+	LevelServer.connect("level_completed", self, "_on_LevelServer_level_completed")
 
 #-------------------------------------------------
 #      Setters & Getters

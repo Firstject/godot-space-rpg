@@ -43,7 +43,7 @@ export (float) var growth_rate_expo = 3.2
 
 var current_level : int = 1 setget set_current_level
 
-var current_exp : int = 0
+var current_exp : int
 
 var current_next_exp : int setget set_current_next_exp
 
@@ -77,8 +77,6 @@ func gain_exp(exp_value : int) -> void:
 func level_up() -> void:
 	#Increase level
 	current_level += 1
-	
-	AudioCenter.level_up.play()
 	
 	update_required_exp()
 	

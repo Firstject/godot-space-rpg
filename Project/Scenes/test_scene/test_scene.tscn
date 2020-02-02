@@ -86,50 +86,38 @@ lv = 300
 
 [node name="test-player-ship" parent="." instance=ExtResource( 6 )]
 position = Vector2( 113.126, 251.532 )
-lv = 1
 
 [node name="test-enemy-static" parent="." instance=ExtResource( 7 )]
 position = Vector2( 176.782, 31.1504 )
 base_atk = 5.0
-debris_count = 3
 
 [node name="test-moving-enemy" parent="." instance=ExtResource( 8 )]
 position = Vector2( 176.332, 81.3549 )
-debris_count = 3
 
 [node name="test-moving-enemy2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 162.332, 67.3543 )
-debris_count = 3
 
 [node name="test-moving-enemy3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 145.304, 56.7593 )
-debris_count = 3
 
 [node name="test-moving-enemy4" parent="." instance=ExtResource( 8 )]
 position = Vector2( 129.411, 48.813 )
-debris_count = 3
 
 [node name="test-moving-enemy5" parent="." instance=ExtResource( 8 )]
 position = Vector2( 115.411, 48.0562 )
-debris_count = 3
 
 [node name="test-moving-enemy6" parent="." instance=ExtResource( 8 )]
 position = Vector2( 97.626, 41.2451 )
-debris_count = 3
 
 [node name="test-moving-enemy7" parent="." instance=ExtResource( 8 )]
 position = Vector2( 73.7871, 45.7858 )
-debris_count = 3
 
 [node name="test-moving-enemy8" parent="." instance=ExtResource( 8 )]
 position = Vector2( 52.597, 37.8395 )
-debris_count = 3
 
 [node name="test-moving-enemy9" parent="." instance=ExtResource( 8 )]
 position = Vector2( 33.6772, 46.1642 )
-debris_count = 3
 
 [node name="test-moving-enemy10" parent="." instance=ExtResource( 8 )]
 position = Vector2( 15.1358, 34.0556 )
-debris_count = 3
 [connection signal="pressed" from="Control/VBoxContainer/QuitBtn" to="." method="_on_QuitBtn_pressed"]

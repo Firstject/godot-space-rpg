@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/super_ready.wav-0a802eea944e776ad99f375b0f8cf634.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sfx/Combat/super_ready.wav"
+dest_files=[ "res://.import/super_ready.wav-0a802eea944e776ad99f375b0f8cf634.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

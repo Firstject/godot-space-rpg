@@ -55,5 +55,8 @@ export (Resource) var equip_database setget ,get_equip_database
 #      Setters & Getters
 #-------------------------------------------------
 
+func has_equip_database() -> bool:
+	return equip_database != null
+
 func get_equip_database() -> ResItemEquip:
 	return equip_database

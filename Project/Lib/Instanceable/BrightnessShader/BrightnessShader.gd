@@ -32,7 +32,6 @@ const BRIGHTNESS_SHADER = preload("res://Lib/Instanceable/BrightnessShader/Brigh
 
 export (float) var brightness = 0 setget set_brightness
 
-
 onready var s_material : ShaderMaterial
 
 #-------------------------------------------------

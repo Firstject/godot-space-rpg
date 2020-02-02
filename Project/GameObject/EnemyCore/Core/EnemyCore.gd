@@ -23,8 +23,15 @@ class_name EnemyCore
 #-------------------------------------------------
 
 const debris_obj = preload("res://GameObject/PlayerProjectile/Debris.tscn")
+const EXPLOSION_EFF = preload("res://GameObject/Effect/ExplosionEffect.tscn")
 
 const DEBRIS_KILL_EXP_MULTIPLIER = 2
+const CREDIT_MULTIDROP_RAND_VALUE_FACTOR = 0.5
+
+enum DeathSfx {
+	NORMAL,
+	LARGE
+}
 
 #-------------------------------------------------
 #      Properties
@@ -32,7 +39,17 @@ const DEBRIS_KILL_EXP_MULTIPLIER = 2
 
 export (int) var experience = 10
 
+export (int) var credits_base = 3
+
+export (float) var credits_drop_chance = 0.35
+
+export (int) var credits_drop_count = 1
+
 export (int) var debris_count = 3
+
+export (int) var debris_damage = 10
+
+export (DeathSfx) var death_sound
 
 export (bool) var destroy_on_collide = false
 
@@ -45,9 +62,15 @@ export (bool) var can_take_collision_damage = true
 
 export (bool) var destroy_outside_screen = true
 
+#When true, this enemy is counted as total enemies on the screen
+#by BattleServer. Serves the purpose for when the level is about to
+#finished. DO NOT CHANGE THIS AT RUNTIME!
+export (bool) var is_battleserver_countable = true
+
 onready var bullet_behavior : BulletBehavior = $BulletBehavior as BulletBehavior
 onready var damage_anim := $DamageAnimationPlayer
 onready var damage_popup_turret := $DamagePopupTurret
+onready var pickups_turret := $PickupsTurret as PickupsTurret
 onready var exp_system := $ExperienceSystem as ExperienceSystem
 
 #-------------------------------------------------
@@ -56,6 +79,8 @@ onready var exp_system := $ExperienceSystem as ExperienceSystem
 
 func _ready() -> void:
 	_init_exp_system()
+#	_init_pickups_turret()
+	_battleserver_change_total_enemy_count(1)
 
 #-------------------------------------------------
 #      Virtual Methods
@@ -87,7 +112,7 @@ func collide_with_player_projectile(proj : PlayerProjectile):
 	
 	if is_killed_by_debris(proj):
 		exp_system.multiply_exp_drop(DEBRIS_KILL_EXP_MULTIPLIER)
-		AudioCenter.debris_kill.play()
+		AudioCenter.sfx_combat_debris_kill.play()
 	
 	damage_anim.play("Damage")
 	
@@ -138,14 +163,29 @@ func kill() -> void:
 	BattleServer.emit_signal("enemy_killed", self)
 	
 	_spawn_debris()
+	_spawn_main_currency()
 	
-	AudioCenter.enemy_dead_small.pitch_scale = rand_range(0.8, 1.2)
-	AudioCenter.enemy_dead_small.play()
+	#Play death sfx
+	match death_sound:
+		DeathSfx.NORMAL:
+			AudioCenter.sfx_combat_enemy_dead1.play()
+			AudioCenter.sfx_combat_enemy_dead1.pitch_scale = rand_range(0.8, 1.2)
+		DeathSfx.LARGE:
+			AudioCenter.sfx_combat_enemy_dead2.play()
+			AudioCenter.sfx_combat_enemy_dead2.pitch_scale = rand_range(0.8, 1.2)
+	
+	#Spawn explosion effect
+	var ex_eff = EXPLOSION_EFF.instance()
+	get_parent().add_child(ex_eff)
+	ex_eff.global_position = self.global_position
 	
 	self.queue_free()
 
 func is_killed_by_debris(player_proj) -> bool:
 	return is_dead() and player_proj is PlayerProjectileDebris
+
+func get_total_credit_drop() -> int:
+	return int(credits_base + ceil(credits_base * (pow(lv - 1, 0.9) / 6)))
 
 #-------------------------------------------------
 #      Connections
@@ -162,7 +202,9 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 		collide_with_player_projectile(area_owner)
 	if area_owner is PlayerShip:
 		collide_with_player_ship(area_owner)
-	
+
+func _on_EnemyCore_tree_exiting() -> void:
+	_battleserver_change_total_enemy_count(-1)
 
 #-------------------------------------------------
 #      Private Methods
@@ -178,13 +220,30 @@ func _spawn_debris() -> void:
 		get_parent().call_deferred("add_child", deb)
 		deb.global_position = global_position
 		deb.set_level_from_entity(self)
-		deb.add_bonuses_from_entity(self)
+		deb.base_atk_bonus += debris_damage
+		deb.update_stats()
+
+func _spawn_main_currency() -> void:
+	if rand_range(0, 1) > credits_drop_chance:
+		return
+	
+	var splited_credits = Util_NumberSplit.isplit(get_total_credit_drop(), credits_drop_count, CREDIT_MULTIDROP_RAND_VALUE_FACTOR)
+	for i in splited_credits:
+		var pickups_main_curr := pickups_turret.spawn_main_currency()
+		pickups_main_curr.main_currency_add = i
 
 func _test_kill():
 	if is_dead():
 		kill()
 
+func _battleserver_change_total_enemy_count(amount : int):
+	if is_battleserver_countable:
+		BattleServer.total_enemy_count += amount
+
 #-------------------------------------------------
 #      Setters & Getters
 #-------------------------------------------------
+
+
+
 

@@ -6,11 +6,17 @@
 [node name="EnemyProjectileCore" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 base_hp = 1.0
+base_atk = 0.0
+base_def = 0.0
 can_hit = false
 destroy_on_collide = true
 apply_invinc_on_collide_player = false
 is_collider = false
 can_take_collision_damage = false
+is_battleserver_countable = false
 
 [node name="BulletBehavior" parent="." index="0"]
 active = true
+
+[node name="LevelBulletBhv" parent="." index="1"]
+active = false

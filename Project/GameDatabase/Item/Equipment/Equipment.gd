@@ -40,7 +40,9 @@ export (float) var def_bonus
 
 export (int) var hp_bonus
 
-export (float) var crit_bonus
+export (float) var crit_rate_bonus
+
+export (float) var crit_damage_rate_bonus
 
 export (float) var rage_bonus
 

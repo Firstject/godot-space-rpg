@@ -1,9 +1,41 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://GameObject/PlayerShip/Core/PlayerShip.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Image/PlayerShips/Scout.png" type="Texture" id=2]
 
+[sub_resource type="Animation" id=1]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+}
+
 [node name="test-player-ship" instance=ExtResource( 1 )]
+base_atk = 11.0
+base_def = 12.0
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
+
+[node name="DamageAnim" parent="." index="9"]
+anims/Death = SubResource( 1 )

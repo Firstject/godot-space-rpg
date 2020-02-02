@@ -25,6 +25,8 @@ class_name PlayerProjectile
 #      Properties
 #-------------------------------------------------
 
+export (PackedScene) var hit_effect
+
 export (bool) var destroy_on_hit = true
 export (bool) var hit_multiple = false
 export (bool) var can_reset_hit = true
@@ -61,6 +63,12 @@ func can_projectile_hit() -> bool:
 	return not is_hit or hit_multiple
 
 func kill():
+	if hit_effect != null:
+		#Spawn effect
+		var eff = hit_effect.instance()
+		get_parent().add_child(eff)
+		eff.global_position = global_position
+	
 	queue_free()
 
 #-------------------------------------------------

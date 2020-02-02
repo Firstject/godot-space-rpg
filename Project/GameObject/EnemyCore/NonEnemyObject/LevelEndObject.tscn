@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GameObject/EnemyCore/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GameObject/EnemyCore/NonEnemyObject/LevelEndObject.gd" type="Script" id=2]
+
+[node name="LevelEndObject" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+is_battleserver_countable = false
+
+[node name="LevelBulletBhv" parent="." index="1"]
+active = false
+
+[node name="EndCheckIntervalTimer" type="Timer" parent="." index="8"]
+wait_time = 0.3
+autostart = true
+
+[node name="ForceEndTimer" type="Timer" parent="." index="9"]
+wait_time = 8.0
+one_shot = true
+autostart = true
+[connection signal="timeout" from="EndCheckIntervalTimer" to="." method="_on_EndCheckIntervalTimer_timeout"]
+[connection signal="timeout" from="ForceEndTimer" to="." method="_on_ForceEndTimer_timeout"]

@@ -63,16 +63,6 @@ func _ready() -> void:
 	exp_system.set_current_level(lv)
 	_update_gui()
 
-func _process(delta: float) -> void:
-	if global_position.x < 8:
-		global_position.x = 8
-	if global_position.x > 216:
-		global_position.x = 216
-	if global_position.y < 8:
-		global_position.y = 8
-	if global_position.y > 392:
-		global_position.y = 392
-
 #-------------------------------------------------
 #      Virtual Methods
 #-------------------------------------------------

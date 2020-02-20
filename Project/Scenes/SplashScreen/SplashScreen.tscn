@@ -1,25 +1,48 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Lib/Instanceable/BgColorSetter/BgColorSetter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Theme/ClassicThemeV2/ClassicTheme_V2.tres" type="Theme" id=2]
 [ext_resource path="res://Scenes/SplashScreen/SplashScreen.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Fonts/SkyFly8BitOutline.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assets/Image/LevelBackground/test-blue-bg.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Image/GUI/Info.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Image/GUI/InfoPressed.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "New Anim"
-length = 1.8
+length = 30.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1.3, 1.8 ),
+"times": PoolRealArray( 0, 30 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( -112, -1080 ), Vector2( -112, -2608 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 29, 30 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Button
+
+func _pressed() -> void:
+	OS.shell_open(\"https://trello.com/b/3H2v6Aup/galax-hero-superpower\")
+"
 
 [node name="Node" type="Node"]
 script = ExtResource( 3 )
@@ -29,43 +52,329 @@ script = ExtResource( 3 )
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 theme = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Loading" type="Label" parent="Control"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -120.0
-margin_top = -16.0
-margin_right = -8.0
-text = "Loading..."
-align = 2
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -112.0
+margin_top = -1080.0
+margin_right = 336.0
+margin_bottom = 3016.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 224, 2048 )
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Loading"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/TextureRect"]
 autoplay = "New Anim"
 "anims/New Anim" = SubResource( 1 )
 
-[node name="Label" type="Label" parent="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-text = "This is the demo version of the Galax Hero.
-The final game will be different."
+[node name="Title" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -112.0
+margin_top = 24.0
+margin_right = 112.0
+margin_bottom = 49.0
+custom_fonts/font = ExtResource( 4 )
+text = "GALAX HERO
+SUPERPOWER"
 align = 1
 valign = 1
-
-[node name="SafeLoadSceneTimer" type="Timer" parent="."]
-wait_time = 2.5
-autostart = true
 __meta__ = {
-"_editor_description_": "WAIT TIME MARGIN IS SET TO 1.2 SECONDS. DO NOT CHANGE AS THIS WOULD LEAD TO SAVE FILE LOADING OVERHEAD ISSUE. edit:
-
-edit: this is ok to change in demo version. no save file involved"
+"_edit_use_anchors_": false
 }
-[connection signal="timeout" from="SafeLoadSceneTimer" to="." method="_on_SafeLoadSceneTimer_timeout"]
+
+[node name="NoteLabel" type="Label" parent="Control"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -32.0
+margin_bottom = -7.0
+text = "This is the demo version of the Galax Hero.
+The final game will be completely different."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VersionLabel" type="Label" parent="Control"]
+modulate = Color( 0.505882, 0.505882, 0.505882, 1 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 184.0
+margin_top = -10.0
+margin_right = -2.0
+margin_bottom = 1.0
+text = "v0.1final"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnVBox" type="VBoxContainer" parent="Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -92.0
+margin_top = -136.0
+margin_right = 92.0
+margin_bottom = -49.0
+mouse_filter = 2
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoteLabel2" type="Label" parent="Control/BtnVBox"]
+margin_top = 14.0
+margin_right = 184.0
+margin_bottom = 25.0
+text = "Start a quick game"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayBtn2" type="Button" parent="Control/BtnVBox"]
+margin_top = 29.0
+margin_right = 184.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0, 0.631373, 1, 1 )
+text = "Nebustar (not easy)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayBtn" type="Button" parent="Control/BtnVBox"]
+margin_top = 60.0
+margin_right = 184.0
+margin_bottom = 87.0
+custom_colors/font_color = Color( 0.756863, 0.101961, 0.101961, 1 )
+text = "Red Dwarf (tough)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AboutButton" type="TextureButton" parent="Control"]
+margin_left = 192.0
+margin_top = 8.0
+margin_right = 218.0
+margin_bottom = 32.0
+focus_mode = 0
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+expand = true
+stretch_mode = 3
+
+[node name="Popup" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popup" type="Popup" parent="Popup"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 32.0
+margin_right = -16.0
+margin_bottom = -32.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Popup/Popup"]
+modulate = Color( 1, 1, 1, 0.47451 )
+margin_left = -16.0
+margin_top = -88.0
+margin_right = 208.0
+margin_bottom = 416.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Popup/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Popup/Popup/Panel"]
+anchor_right = 1.0
+margin_bottom = 11.0
+text = "-About this project-"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Popup/Popup/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 24.0
+margin_right = -8.0
+margin_bottom = -8.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/Popup/Panel/ScrollContainer"]
+margin_right = 176.0
+margin_bottom = 1417.0
+size_flags_horizontal = 3
+custom_constants/separation = 16
+
+[node name="Header" type="Label" parent="Popup/Popup/Panel/ScrollContainer/VBoxContainer"]
+margin_right = 172.0
+margin_bottom = 12.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 4 )
+text = "About"
+autowrap = true
+
+[node name="Label" type="Label" parent="Popup/Popup/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 28.0
+margin_right = 172.0
+margin_bottom = 263.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Galax Hero is an RPG Shoot-em-up (shump) hybrid for the Android platform that is being worked on. It takes classic RPG elements such as leveling, adding points to statistics, and finding items and new weapons (beams), and it combines them with top scrolling battle mechanics.
+
+The game will be themed with 8-bit instead of retro look and feel. This will be slighty different compared to modern games. The sound and music will also be composed on FamiTracker and recorded straight from a Nintendo Entertainment System for a greater accuracy."
+autowrap = true
+
+[node name="Header2" type="Label" parent="Popup/Popup/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 279.0
+margin_right = 172.0
+margin_bottom = 291.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 4 )
+text = "My Ideology"
+autowrap = true
+
+[node name="Label2" type="Label" parent="Popup/Popup/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 307.0
+margin_right = 172.0
+margin_bottom = 822.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "I am an independent developer working by myself on what could one day be a massive game spanning hundreds of levels. I have put a great deal of thought and effort into each minor aspect of the game. While working I kept a single thought in mind: \"Do not worry about what is profitable, focus on what makes a game truly an enjoyable experience.\" Games today focus entirely on what will sell the most copies, whether that includes enjoyable gameplay or not. They are often rushed, and include little to no outside user input in their design. I intend to focus on what the players want. This is why Galax Hero will not include ads and no content will be removed for a full version. With this model I do not expect to make any money, although I intend to create a truly enjoyable experience.
+
+To bring the game more fun, here are promises from an independent developer:
+- I will never add in-app-purchase content that would give the player advantages. No pay to play/win.
+- I will never interrupt you with ads or offering special content by giving a short video to watch. You will never lose more than a few minutes of play.
+- Everyone can beat the game without having to wait for energy to recharge. I'm not stopping you by implementing that feature. Just have fun and enjoy!"
+autowrap = true
+
+[node name="Header3" type="Label" parent="Popup/Popup/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 838.0
+margin_right = 172.0
+margin_bottom = 850.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 4 )
+text = "Design Process"
+autowrap = true
+
+[node name="Label3" type="Label" parent="Popup/Popup/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 866.0
+margin_right = 172.0
+margin_bottom = 1115.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "The game creation process will be developed by one person. It is a hard task and will require a lot of work, time and money, but it is possible. For the design, I have no plan when to release the full game but I'll do my best to bring a successful game for you to play as soon as possible. A delayed game is eventually good, but a rushed game is forever bad.
+
+The game will be created by Godot Engine, an open source project under the permissive MIT license. Using Trello, the development progression will always keep on track what need to be done. If you'd like to see my current progress, you can visit here."
+autowrap = true
+
+[node name="TrelloButton" type="Button" parent="Popup/Popup/Panel/ScrollContainer/VBoxContainer"]
+margin_left = 26.0
+margin_top = 1131.0
+margin_right = 146.0
+margin_bottom = 1158.0
+size_flags_horizontal = 4
+text = "Visit Progress on Trello"
+script = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header4" type="Label" parent="Popup/Popup/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 1174.0
+margin_right = 172.0
+margin_bottom = 1186.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 4 )
+text = "Support me on Patreon"
+autowrap = true
+
+[node name="Label4" type="Label" parent="Popup/Popup/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 1202.0
+margin_right = 172.0
+margin_bottom = 1269.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "No link yet. I want to wait and see how well the game goes. If it's going good, I might add some source files such as music modules as a reward  for the support."
+autowrap = true
+
+[node name="HSeparator" type="HSeparator" parent="Popup/Popup/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 1285.0
+margin_right = 172.0
+margin_bottom = 1293.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Popup/Popup/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 1309.0
+margin_right = 172.0
+margin_bottom = 1390.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Last but not least, I'd like to thank you for playing my game. There are several core features that I haven't finished. When the time comes, the game will change a lot. The best games are made by those who play."
+autowrap = true
+
+[node name="End" type="Label" parent="Popup/Popup/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 1406.0
+margin_right = 172.0
+margin_bottom = 1417.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "- First"
+autowrap = true
+[connection signal="pressed" from="Control/BtnVBox/PlayBtn2" to="." method="_on_PlayBtn2_pressed"]
+[connection signal="pressed" from="Control/BtnVBox/PlayBtn" to="." method="_on_PlayBtn_pressed"]
+[connection signal="pressed" from="Control/AboutButton" to="." method="_on_AboutButton_pressed"]

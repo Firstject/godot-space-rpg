@@ -19,3 +19,4 @@ speed_setting = 1
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="SpriteCycling" parent="Objects" instance=ExtResource( 3 )]
+pause_mode = 2

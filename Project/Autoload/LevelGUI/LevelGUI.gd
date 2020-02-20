@@ -19,6 +19,9 @@ extends CanvasLayer
 #      Constants
 #-------------------------------------------------
 
+const TEXTURE_PAUSE_GAME = preload("res://Assets/Image/GUI/PauseIcon.png")
+const TEXTURE_UNPAUSE_GAME = preload("res://Assets/Image/GUI/UnpauseIcon.png")
+
 const HP_CRITICAL_PERCENT = 0.4
 const SHIELD_CRITICAL_PERCENT = 0.3
 
@@ -26,7 +29,7 @@ const SHIELD_CRITICAL_PERCENT = 0.3
 #      Properties
 #-------------------------------------------------
 
-onready var playfield_input := $PlayfieldGUI
+onready var playfield_input := $PlayfieldGUI as Control
 
 onready var level_bar = $MarginContainer/Control/PlayerHpBar/VBox/LvHpSuper/LevelBar
 onready var level_label = $MarginContainer/Control/PlayerHpBar/VBox/LvHpSuper/LevelBar/Label
@@ -89,6 +92,7 @@ func set_gui_visible(set : bool) -> void:
 		showhide_ahim.play("Show")
 	else:
 		showhide_ahim.play("Hide")
+	set_fps_visible(set)
 
 func start_stage_enter_anim() -> void:
 	level_text_anim.play("FlyinOut")
@@ -148,10 +152,15 @@ func set_superpower_btn_disabled(disabled : bool) -> void:
 func start_level_clear_anim():
 	level_end_anim.play("Clear")
 	set_gui_visible(false)
+	_update_score()
 
 func start_level_fail_anim():
 	level_end_anim.play("Fail")
 	set_gui_visible(false)
+	_update_score()
+
+func set_fps_visible(set : bool):
+	$FPSLabel.visible = set
 
 #-------------------------------------------------
 #      Connections
@@ -162,6 +171,18 @@ func _on_RestartButton_pressed() -> void:
 	get_tree().paused = false
 	set_superpower_btn_disabled(true)
 	get_tree().reload_current_scene()
+
+func _on_PauseButton_pressed() -> void:
+	if get_tree().is_paused():
+		get_tree().paused = false
+		pause_btn.icon = TEXTURE_PAUSE_GAME
+	else:
+		get_tree().paused = true
+		pause_btn.icon = TEXTURE_UNPAUSE_GAME
+
+func _on_ExitButton_pressed() -> void:
+	$LevelEnd.visible = false
+	playfield_input.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func _on_BattleServer_player_dead(player_obj) -> void:
 	yield(get_tree().create_timer(3.0), "timeout")
@@ -194,9 +215,9 @@ func _update_hp_anim(curr_hp_percent):
 	else:
 		hp_anim.play("Normal")
 
+func _update_score():
+	$LevelEnd/Score/ScoreValue.text = str(get_tree().get_nodes_in_group("PlayerShip").front().exp_system.current_exp)
+
 #-------------------------------------------------
 #      Setters & Getters
 #-------------------------------------------------
-
-
-

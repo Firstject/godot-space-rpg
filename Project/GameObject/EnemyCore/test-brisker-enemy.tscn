@@ -11,10 +11,11 @@ extents = Vector2( 8, 8 )
 
 [node name="test-brisker-enemy" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
-base_hp = 18.0
+base_hp = 12.0
 base_atk = 17.0
 base_def = 0.0
 experience = 3
+debris_damage = 3
 
 [node name="EnemyTurret" parent="." index="0" instance=ExtResource( 5 )]
 enemy_obj = ExtResource( 4 )

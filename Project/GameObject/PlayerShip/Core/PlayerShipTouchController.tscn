@@ -8,4 +8,7 @@ script = ExtResource( 1 )
 [node name="TouchIdleTimer" type="Timer" parent="."]
 wait_time = 0.6
 one_shot = true
+
+[node name="DragIdleTimer" type="Timer" parent="."]
 [connection signal="timeout" from="TouchIdleTimer" to="." method="_on_TouchIdleTimer_timeout"]
+[connection signal="timeout" from="DragIdleTimer" to="." method="_on_DragIdleTimer_timeout"]

@@ -46,6 +46,8 @@ export (bool) var autostart_stage_enter_pose = true
 #-------------------------------------------------
 
 func _ready() -> void:
+	LevelGUI.playfield_input.mouse_filter = Control.MOUSE_FILTER_STOP
+	
 	_init_level_server_data()
 	LevelGUI.set_gui_visible(true)
 	

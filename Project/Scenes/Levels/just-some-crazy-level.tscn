@@ -15,7 +15,7 @@
 [ext_resource path="res://Assets/Audio/Bgm/Calm2.ogg" type="AudioStream" id=13]
 
 [node name="just-some-crazy-level" instance=ExtResource( 1 )]
-level_name = "Demo Star"
+level_name = "Red Dwarf"
 level_music = ExtResource( 13 )
 lv_scroll_speed = 30.0
 bg_scroll_speed = 15.0

@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://GameObject/EnemyCore/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Lib/Instanceable/BulletBehavior/BulletBehavior.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GameObject/EnemyCore/Droplet.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Image/Enemy/Die.png" type="Texture" id=4]
+[ext_resource path="res://GameObject/EnemyProjectile/EnemyWeakBullet.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GameObject/EnemyTurret/EnemyTurret.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[node name="Droplet" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+base_hp = 15.0
+
+[node name="EnemyTurret" parent="." index="0" instance=ExtResource( 6 )]
+enemy_obj = ExtResource( 5 )
+
+[node name="BulletBehavior" parent="." index="1"]
+active = true
+speed = 0.0
+acceleration = 500.0
+signal_on_distance_travelled = 250.0
+
+[node name="BulletBehavior2" parent="." index="2" instance=ExtResource( 2 )]
+active = false
+speed = 90.0
+
+[node name="LevelBulletBhv" parent="." index="3"]
+active = false
+
+[node name="Sprite" parent="." index="4"]
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" parent="Hitbox/Area2D" index="0"]
+shape = SubResource( 1 )
+
+[node name="ShootTimer" type="Timer" parent="." index="11"]
+wait_time = 0.18
+[connection signal="distance_travelled_reached" from="BulletBehavior" to="." method="_on_BulletBehavior_distance_travelled_reached"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

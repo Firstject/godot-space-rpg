@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GameObject/EnemyProjectile/Core/EnemyProjectileCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Image/Enemy/AnimatedWeakBullet.tres" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 4 )
+
+[node name="EnemyWeakBullet" instance=ExtResource( 1 )]
+can_hit = true
+experience = 0
+credits_drop_chance = 0.0
+debris_count = 2
+debris_damage = 15
+can_take_collision_damage = true
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="Hitbox/Area2D" index="0"]
+shape = SubResource( 1 )

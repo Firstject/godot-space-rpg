@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://GameObject/EnemyCore/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Image/Enemy/Die.png" type="Texture" id=2]
+[ext_resource path="res://GameObject/EnemyCore/Explodang.gd" type="Script" id=3]
+[ext_resource path="res://GameObject/EnemyTurret/EnemyTurret.gd" type="Script" id=4]
+[ext_resource path="res://GameObject/EnemyProjectile/EnemyWeakBullet.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[node name="Explodang" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+base_hp = 9.0
+debris_count = 5
+
+[node name="EnemyTurret" type="Node2D" parent="." index="0"]
+script = ExtResource( 4 )
+enemy_obj = ExtResource( 5 )
+
+[node name="BulletBehavior" parent="." index="1"]
+active = true
+speed = 240.0
+acceleration = -160.0
+
+[node name="LevelBulletBhv" parent="." index="2"]
+active = false
+
+[node name="Sprite" parent="." index="3"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="Hitbox/Area2D" index="0"]
+shape = SubResource( 1 )
+[connection signal="stopped_moving" from="BulletBehavior" to="." method="_on_BulletBehavior_stopped_moving"]

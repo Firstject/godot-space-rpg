@@ -248,11 +248,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Shump - RPG"
+config/name="Galax Hero - Superpower"
 run/main_scene="res://Scenes/SplashScreen/SplashScreen.tscn"
-run/disable_stdout=true
-run/disable_stderr=true
-config/icon="res://Assets/Image/Enemy/test-brisker-enemy.png"
+config/icon="res://icon.png"
+config/quit_on_go_back=false
 
 [autoload]
 

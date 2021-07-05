@@ -6,9 +6,5 @@ A work-in-progress 8-bit space shooter RPG game made with Godot Engine. Inspired
 
 The project is not compatible with the Godot version 3.1 or earlier.
 
-# Future updates
-
-This project will not be updated here under the personal rights. To see what's new, visit [this link](https://trello.com/b/3H2v6Aup/galax-hero-superpower)
-
 **Follow up my progress on Trello:**
 https://trello.com/b/3H2v6Aup/galax-hero-superpower
